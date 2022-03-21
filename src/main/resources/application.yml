@@ -1,0 +1,15 @@
+server:
+  port: 8023
+  servlet:
+    context-path: /api
+spring:
+  application:
+    name: personalHealth
+  datasource:
+    username: root
+    password: 806823
+    url: jdbc:mysql://localhost:3306/health?useUnicode=true&characterEncoding=UTF-8&serverTimeZone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
