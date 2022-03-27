@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.health.mapper.PermissionMapper">
+
+    <resultMap id="BaseResultMap" type="com.lt.health.entity.Permission">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="label" column="label" jdbcType="VARCHAR"/>
+        <result property="code" column="code" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,label,code,
+        status
+    </sql>
+
+    <!--List<Permission> findPermissionsByUserId(@Param("userId") Long userId);-->
+    <select id="findPermissionsByUserId" resultType="com.lt.health.entity.Permission">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_permission where status = 1
+        <if test="userId != null">
+            and id in (select permission_id from sys_roles_permissions where role_id in (select sys_user_roles.role_id
+            from sys_user_roles where user_id = #{userId}))
+        </if>
+    </select>
+</mapper>

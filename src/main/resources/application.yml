@@ -1,15 +1,67 @@
 server:
-  port: 8023
-  servlet:
-    context-path: /api
+  # 端口信息
+  port: 8000
+
+# 配置项目名称
 spring:
+  author: 狂小腾
   application:
     name: personalHealth
-  datasource:
-    username: root
-    password: 806823
-    url: jdbc:mysql://localhost:3306/health?useUnicode=true&characterEncoding=UTF-8&serverTimeZone=UTC
-    driver-class-name: com.mysql.cj.jdbc.Driver
+  # 使用本地配置
+  profiles:
+    active: dev
+  # 设置文件上传最大大小，默认1M
+  servlet:
+    multipart:
+      max-file-size: 30MB
+
+# 配置MybatisPlus
 mybatis-plus:
   configuration:
+    # 日志打印信息
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 开启驼峰命名
+    map-underscore-to-camel-case: true
+  # mapper接口找的xml文件
+  mapper-locations: classpath:mapper/*.xml
+  # 扫描的实体类
+  type-aliases-package: com.lt.health.entity
+  global-config:
+    db-config:
+      logic-delete-field: isDelete # 全局逻辑删除的实体字段名(since 3.3.0,配置后可以忽略不配置步骤2)
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+
+# jwt配置
+jwt:
+  # 请求头
+  tokenHeader: Authorization
+  # 签名加盐
+  secret: iwqjhda8232bjgh432
+  #JWT过期时间(60*60*24*7) 半个小时 7天
+  expiration: 604800
+  # token头部
+  tokenHead: 'Bearer '
+
+# 配置七牛云
+qiniu:
+  accessKey: 0z_mX9dvRAzBY7p2lLwOPHrgyiyzKx7fW6wJ7QYJ
+  secretKey: cTnl5U3ZA1cIKzt3X4zpGnFWfdzPvMc9Q7e7fg1w
+  bucket: mysport
+
+# 配置阿里云短信服务
+aliyun:
+  # ak
+  accessKey:
+  # sk
+  secretKey:
+  # 签名
+  signName:
+  # 短信模板
+  templateCode:
+
+# 微信小程序
+mini:
+  # 密钥
+  appid: wx764a8c18407bff62
+  secret: 6b7173449d443d8299fd3ac5de837d60

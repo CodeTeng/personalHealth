@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.health.mapper.FoodMapper">
+
+    <resultMap id="BaseResultMap" type="com.lt.health.entity.Food">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="title" column="title" jdbcType="VARCHAR"/>
+            <result property="typeId" column="type_id" jdbcType="BIGINT"/>
+            <result property="imageUrls" column="image_urls" jdbcType="VARCHAR"/>
+            <result property="nutrient" column="nutrient" jdbcType="VARCHAR"/>
+            <result property="heat" column="heat" jdbcType="FLOAT"/>
+            <result property="protein" column="protein" jdbcType="FLOAT"/>
+            <result property="fat" column="fat" jdbcType="FLOAT"/>
+            <result property="carbonWater" column="carbon_water" jdbcType="FLOAT"/>
+            <result property="dietaryFiber" column="dietary_fiber" jdbcType="FLOAT"/>
+            <result property="vitaminA" column="vitamin_a" jdbcType="FLOAT"/>
+            <result property="vitaminC" column="vitamin_c" jdbcType="FLOAT"/>
+            <result property="vitaminE" column="vitamin_e" jdbcType="FLOAT"/>
+            <result property="carrot" column="carrot" jdbcType="FLOAT"/>
+            <result property="vitaminB1" column="vitamin_b1" jdbcType="FLOAT"/>
+            <result property="vitaminB2" column="vitamin_b2" jdbcType="FLOAT"/>
+            <result property="niacin" column="niacin" jdbcType="FLOAT"/>
+            <result property="cholesterol" column="cholesterol" jdbcType="FLOAT"/>
+            <result property="magnesium" column="magnesium" jdbcType="FLOAT"/>
+            <result property="iron" column="iron" jdbcType="FLOAT"/>
+            <result property="calcium" column="calcium" jdbcType="FLOAT"/>
+            <result property="zinc" column="zinc" jdbcType="FLOAT"/>
+            <result property="copper" column="copper" jdbcType="FLOAT"/>
+            <result property="manganese" column="manganese" jdbcType="FLOAT"/>
+            <result property="potassium" column="potassium" jdbcType="FLOAT"/>
+            <result property="phosphorus" column="phosphorus" jdbcType="FLOAT"/>
+            <result property="sodium" column="sodium" jdbcType="FLOAT"/>
+            <result property="selenium" column="selenium" jdbcType="FLOAT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,title,type_id,
+        image_urls,nutrient,heat,
+        protein,fat,carbon_water,
+        dietary_fiber,vitamin_a,vitamin_c,
+        vitamin_e,carrot,vitamin_b1,
+        vitamin_b2,niacin,cholesterol,
+        magnesium,iron,calcium,
+        zinc,copper,manganese,
+        potassium,phosphorus,sodium,
+        selenium
+    </sql>
+</mapper>

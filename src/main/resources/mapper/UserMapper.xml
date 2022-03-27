@@ -5,26 +5,37 @@
 <mapper namespace="com.lt.health.mapper.UserMapper">
 
     <resultMap id="BaseResultMap" type="com.lt.health.entity.User">
-            <id property="id" column="id" jdbcType="INTEGER"/>
-            <result property="username" column="username" jdbcType="VARCHAR"/>
-            <result property="password" column="password" jdbcType="VARCHAR"/>
-            <result property="name" column="name" jdbcType="VARCHAR"/>
-            <result property="gender" column="gender" jdbcType="TINYINT"/>
-            <result property="email" column="email" jdbcType="VARCHAR"/>
-            <result property="age" column="age" jdbcType="INTEGER"/>
-            <result property="phone" column="phone" jdbcType="VARCHAR"/>
-            <result property="state" column="state" jdbcType="TINYINT"/>
-            <result property="avatarUrl" column="avatar_url" jdbcType="VARCHAR"/>
-            <result property="isDelete" column="is_delete" jdbcType="TINYINT"/>
-            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
-            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+        <result property="userPassword" column="user_password" jdbcType="VARCHAR"/>
+        <result property="nickName" column="nick_name" jdbcType="VARCHAR"/>
+        <result property="sex" column="sex" jdbcType="TINYINT"/>
+        <result property="avatarUrl" column="avatar_url" jdbcType="VARCHAR"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+        <result property="openId" column="open_id" jdbcType="VARCHAR"/>
+        <result property="userStatus" column="user_status" jdbcType="TINYINT"/>
+        <result property="isAdmin" column="is_admin" jdbcType="TINYINT"/>
+        <result property="phoneNumber" column="phone_number" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="isDelete" column="is_delete" jdbcType="TINYINT"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,username,password,
-        name,gender,email,
-        age,phone,state,
-        avatar_url,is_delete,create_time,
-        update_time
+        id,user_name,user_password,
+        nick_name,sex,avatar_url,
+        address,open_id,user_status,
+        is_admin,phone_number,email,
+        create_time,update_time,is_delete
     </sql>
+
+    <!--User findByUserName(@Param("username") String username)-->
+    <select id="findByUserName" resultType="com.lt.health.entity.User">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_user
+        where (user_name = #{value} or phone_number = #{value} or open_id = #{value})
+    </select>
+
 </mapper>

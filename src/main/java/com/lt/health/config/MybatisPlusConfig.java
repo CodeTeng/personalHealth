@@ -3,7 +3,6 @@ package com.lt.health.config;
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,7 +13,6 @@ import org.springframework.context.annotation.Configuration;
  * @author 狂小腾
  */
 @Configuration
-@MapperScan("com.lt.health.mapper")
 public class MybatisPlusConfig {
 
     /**

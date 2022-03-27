@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.health.mapper.MotionMapper">
+
+    <resultMap id="BaseResultMap" type="com.lt.health.entity.Motion">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="applicableAge" column="applicable_age" jdbcType="VARCHAR"/>
+            <result property="beneficialPosition" column="beneficial_position" jdbcType="VARCHAR"/>
+            <result property="introduction" column="introduction" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,applicable_age,
+        beneficial_position,introduction
+    </sql>
+</mapper>
