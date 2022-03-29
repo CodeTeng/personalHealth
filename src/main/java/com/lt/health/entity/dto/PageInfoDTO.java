@@ -13,7 +13,7 @@ public class PageInfoDTO {
     /**
      * 当前页码
      */
-    private Integer pageNum;
+    private Integer pageNumber;
 
     /**
      * 页数
@@ -21,7 +21,7 @@ public class PageInfoDTO {
     private Integer pageSize;
 
     /**
-     * 分页查询的条件
+     * 分页查询的条件---用户名、昵称、手机号码
      */
-    private String queryInfo;
+    private String queryString;
 }

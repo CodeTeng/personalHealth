@@ -5,11 +5,17 @@
 <mapper namespace="com.lt.health.mapper.UserRolesMapper">
 
     <resultMap id="BaseResultMap" type="com.lt.health.entity.UserRoles">
-            <result property="userId" column="user_id" jdbcType="BIGINT"/>
-            <result property="roleId" column="role_id" jdbcType="BIGINT"/>
+        <result property="userId" column="user_id" jdbcType="BIGINT"/>
+        <result property="roleId" column="role_id" jdbcType="BIGINT"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         user_id,role_id
     </sql>
+
+    <!--void insertUserRoles(@Param("userId") Long userId, @Param("roleId") Long roleId);-->
+    <insert id="insertUserRoles">
+        insert into sys_user_roles
+        values (#{userId}, #{roleId})
+    </insert>
 </mapper>

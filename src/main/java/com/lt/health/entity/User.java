@@ -8,10 +8,12 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 
+ * 用户实体类
+ *
+ * @author 狂小腾
  * @TableName sys_user
  */
-@TableName(value ="sys_user")
+@TableName(value = "sys_user")
 @Data
 public class User implements Serializable {
     /**
@@ -28,7 +30,8 @@ public class User implements Serializable {
     /**
      * 密码
      */
-    private String userPassword;
+    @TableField("password")
+    private String password;
 
     /**
      * 昵称

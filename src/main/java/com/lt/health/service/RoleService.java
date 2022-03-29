@@ -1,5 +1,6 @@
 package com.lt.health.service;
 
+import com.lt.health.constant.Result;
 import com.lt.health.entity.Role;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -10,4 +11,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface RoleService extends IService<Role> {
 
+    /**
+     * 添加用户时角色信息列表
+     */
+    Result findAll();
 }

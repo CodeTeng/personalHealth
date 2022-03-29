@@ -1,5 +1,6 @@
 package com.lt.health.config.security.service;
 
+import com.lt.health.constant.UserConstant;
 import com.lt.health.entity.Menu;
 import com.lt.health.entity.User;
 import com.lt.health.config.security.entity.LoginUser;
@@ -7,7 +8,7 @@ import com.lt.health.mapper.MenuMapper;
 import com.lt.health.mapper.PermissionMapper;
 import com.lt.health.mapper.RoleMapper;
 import com.lt.health.mapper.UserMapper;
-import com.lt.health.utils.RedisUtils;
+import com.lt.health.utils.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -37,21 +38,17 @@ public class UserDetailServiceImpl implements UserDetailsService {
     private MenuMapper menuMapper;
 
     @Autowired
-    private RedisUtils redisUtil;
-
-    private final String USER_KEY_PRE = "userInfo";
-
-    private final long expireTime = 5L;
+    private RedisUtil redisUtil;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user;
         // 1.判断缓存中是否存在该用户 存在直接获取 不存在从数据库中获取并存入缓存中
-        if (redisUtil.haskey(USER_KEY_PRE + username)) {
+        if (redisUtil.haskey(UserConstant.USER_KEY_PRE + username)) {
             // 缓存中存在 直接获取
-            user = (User) redisUtil.getValue(USER_KEY_PRE + username);
+            user = (User) redisUtil.getValue(UserConstant.USER_KEY_PRE + username);
             // 设置设置过期时间 5min
-            redisUtil.expire(USER_KEY_PRE + username, expireTime);
+            redisUtil.expire(UserConstant.USER_KEY_PRE + username, UserConstant.EXPIRE_TIME);
         } else {
             // 从数据库中根据用户名获取用户
             user = userMapper.findByUserName(username);
@@ -79,7 +76,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
                 user.setMenus(menus);
             }
             // 向redis中存入该用户并指定过期时间 5min
-            redisUtil.setValueTime(USER_KEY_PRE + username, user, expireTime);
+            redisUtil.setValueTime(UserConstant.USER_KEY_PRE + username, user, UserConstant.EXPIRE_TIME);
         }
         return new LoginUser(user);
     }

@@ -1,11 +1,9 @@
 package com.lt.health.config.security.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.lt.health.entity.Permission;
 import com.lt.health.entity.Role;
 import com.lt.health.entity.User;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.core.GrantedAuthority;
@@ -13,6 +11,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -21,7 +20,6 @@ import java.util.List;
  * @author: 狂小腾
  * @date: 2022/3/22 20:04
  */
-@Data
 @NoArgsConstructor
 public class LoginUser implements UserDetails, Serializable {
 
@@ -29,19 +27,28 @@ public class LoginUser implements UserDetails, Serializable {
 
     private User user;
 
-    /**
-     * 存储SpringSecurity所需要的权限信息的集合 该字段不序列化
-     */
-    @JSONField(serialize = false)
-    private List<GrantedAuthority> authorities;
-
     public LoginUser(User user) {
         this.user = user;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    /**
+     * 权限数据
+     *
+     * @return 权限数据
+     * @JsonIgnore 在返回的数据中，将该方法对应的属性数据给排除
+     */
     @Override
     @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> authorities = new ArrayList<>();
         List<Role> roles = user.getRoles();
         List<Permission> permissions = user.getPermissions();
         if (roles != null && roles.size() > 0) {
@@ -63,7 +70,7 @@ public class LoginUser implements UserDetails, Serializable {
 
     @Override
     public String getPassword() {
-        return user.getUserPassword();
+        return user.getPassword();
     }
 
     @Override

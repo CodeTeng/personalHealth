@@ -38,7 +38,7 @@ jwt:
   tokenHeader: Authorization
   # 签名加盐
   secret: iwqjhda8232bjgh432
-  #JWT过期时间(60*60*24*7) 半个小时 7天
+  #JWT过期时间(60*60*24*7) 7天
   expiration: 604800
   # token头部
   tokenHead: 'Bearer '

@@ -1,13 +1,12 @@
 package com.lt.health.constant;
 
-import java.util.PriorityQueue;
-
 /**
  * @description: 消息常量
  * @author: 狂小腾
  * @date: 2022/3/21 23:13
  */
 public interface MessageConstant {
+    String PAGE_SUCCESS = "分页查询成功";
     String LOGIN_SUCCESS = "登录成功";
     String LOGIN_FAIL = "登录失败";
     String LOGOUT_SUCCESS = "退出成功";
@@ -33,6 +32,8 @@ public interface MessageConstant {
     String USER_EXIST = "该用户名已经存在";
     String USER_NO_EXIST = "该用户不存在";
     String USER_DIS_ENABLE = "该用户被禁用";
+    String DELETE_USER_SUCCESS = "用户信息删除成功";
+
     String SPORT_SELECT_FAIL = "运动信息查询失败";
     String SPORT_SELECT_SUCCESS = "运动信息查询成功";
     String SPORT_EXIST = "该运动已经存在";
@@ -95,4 +96,6 @@ public interface MessageConstant {
     String PREMISSION_DELETE_FAIL = "权限删除失败";
     String PREMISSION_UPDATE_SUCCESS = "权限修改成功";
     String PREMISSION_UDPATE_FAIL = "权限修改失败";
+
+    String COMPLETE_USER_INFO = "请按要求填写必填字段";
 }

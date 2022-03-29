@@ -7,7 +7,7 @@
     <resultMap id="BaseResultMap" type="com.lt.health.entity.User">
         <id property="id" column="id" jdbcType="BIGINT"/>
         <result property="userName" column="user_name" jdbcType="VARCHAR"/>
-        <result property="userPassword" column="user_password" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
         <result property="nickName" column="nick_name" jdbcType="VARCHAR"/>
         <result property="sex" column="sex" jdbcType="TINYINT"/>
         <result property="avatarUrl" column="avatar_url" jdbcType="VARCHAR"/>
@@ -23,7 +23,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,user_name,user_password,
+        id,user_name,password,
         nick_name,sex,avatar_url,
         address,open_id,user_status,
         is_admin,phone_number,email,

@@ -9,6 +9,8 @@ public class SecurityContents {
     public static final String[] WHITE_LIST = {
             //后端登录接口
             "/user/login",
+            "/user/logout",
+            "/oauth/**",
 
             //swagger相关
             "/favicon.ico",
@@ -26,5 +28,14 @@ public class SecurityContents {
 
             // 小程序相关
             "/mini/login",
+
+//            //发送手机验证码
+//            "/user/sendSms",
+//            //druid的
+//            "/druid/**",
+//
+//            //获取验证码
+//            "/captcha/**",
+//            "/getCaptchaOpen",
     };
 }

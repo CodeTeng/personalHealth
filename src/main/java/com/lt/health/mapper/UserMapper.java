@@ -3,6 +3,7 @@ package com.lt.health.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.lt.health.entity.User;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -21,6 +22,15 @@ public interface UserMapper extends BaseMapper<User> {
      * @return 用户对象
      */
     User findByUserName(@Param("value") String username);
+
+    /**
+     * 根据邮箱更改用户密码
+     *
+     * @param email    邮箱
+     * @param password 加密后的密码
+     */
+    @Update("update sys_user set user_password = #{password} where email = #{email}")
+    void updatePasswordByMail(@Param("email") String email, @Param("password") String password);
 }
 
 
