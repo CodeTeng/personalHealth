@@ -33,6 +33,23 @@ public interface MenuMapper extends BaseMapper<Menu> {
      * @return 子级菜单
      */
     List<Menu> findChildrenMenuByPidAndUserId(@Param("parentId") Long parentId, @Param("userId") Long userId);
+
+    /**
+     * 根据角色id查询父级菜单权限
+     *
+     * @param roleId 角色id
+     * @return 菜单数据
+     */
+    List<Menu> findByRoleId(@Param("roleId") Long roleId);
+
+    /**
+     * 根据角色id和菜单的父级id查询子菜单
+     *
+     * @param roleId   角色id
+     * @param parentId 菜单父级id
+     * @return 子级菜单
+     */
+    List<Menu> findByRoleIdAndParentId(@Param("roleId") Long roleId, @Param("parentId") Long parentId);
 }
 
 

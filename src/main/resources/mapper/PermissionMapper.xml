@@ -26,4 +26,12 @@
             from sys_user_roles where user_id = #{userId}))
         </if>
     </select>
+
+    <!--List<Permission> findByRoleId(@Param("roleId") Long roleId);-->
+    <select id="findByRoleId" resultType="com.lt.health.entity.Permission">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_permission where id in (select permission_id from sys_roles_permissions where role_id = #{roleId}) and
+        status = 1;
+    </select>
 </mapper>

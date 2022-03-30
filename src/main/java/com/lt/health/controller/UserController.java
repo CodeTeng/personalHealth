@@ -90,12 +90,12 @@ public class UserController {
     @PostMapping("/insert")
     public Result insert(@RequestBody User user) {
         String userName = user.getUserName();
-        String userPassword = user.getPassword();
+        String password = user.getPassword();
         Integer sex = user.getSex();
         String phoneNumber = user.getPhoneNumber();
         String email = user.getEmail();
         // 判断字符不能为空
-        if (StringUtils.isAnyBlank(userName, userPassword, phoneNumber, email)) {
+        if (StringUtils.isAnyBlank(userName, password, phoneNumber, email)) {
             return Result.fail(MessageConstant.COMPLETE_USER_INFO);
         }
         if (sex == null) {
@@ -104,7 +104,7 @@ public class UserController {
         if (userName.length() < 2 || userName.length() > 20) {
             return Result.fail("用户名长度在2到20个字符之间！！！");
         }
-        if (userPassword.length() < 6 || userPassword.length() > 20) {
+        if (password.length() < 6 || password.length() > 20) {
             return Result.fail("密码长度在6到20个字符之间！！！");
         }
         // 添加用户
@@ -124,7 +124,7 @@ public class UserController {
     }
 
     /**
-     * 删除用户
+     * 删除用户---逻辑删除
      *
      * @param id 用户id
      * @return 删除提示信息

@@ -9,11 +9,12 @@
         <result property="label" column="label" jdbcType="VARCHAR"/>
         <result property="code" column="code" jdbcType="VARCHAR"/>
         <result property="status" column="status" jdbcType="TINYINT"/>
+        <result property="isDelete" column="is_delete" jdbcType="TINYINT"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         id,label,code,
-        status
+        status,is_delete
     </sql>
 
     <!--List<Role> findRolesByUserId(@Param("userId") Long userId);-->

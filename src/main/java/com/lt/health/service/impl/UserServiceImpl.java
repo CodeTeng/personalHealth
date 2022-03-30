@@ -216,9 +216,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
             return Result.fail(MessageConstant.USER_NO_EXIST);
         }
         log.info("2.删除用户角色信息");
-        QueryWrapper<UserRoles> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("userId", id);
-        userRolesMapper.delete(queryWrapper);
+        List<Role> roles = user.getRoles();
+        if (roles != null && roles.size() > 0) {
+            QueryWrapper<UserRoles> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("user_id", id);
+            userRolesMapper.delete(queryWrapper);
+        }
         log.info("3.删除用户信息");
         userMapper.deleteById(id);
         return Result.success(MessageConstant.DELETE_USER_SUCCESS);

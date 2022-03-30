@@ -23,6 +23,14 @@ public interface PermissionMapper extends BaseMapper<Permission> {
      * @return 权限数据
      */
     List<Permission> findPermissionsByUserId(@Param("userId") Long userId);
+
+    /**
+     * 根据角色id查询对应数据权限
+     *
+     * @param roleId 角色id
+     * @return 数据权限
+     */
+    List<Permission> findByRoleId(@Param("roleId") Long roleId);
 }
 
 

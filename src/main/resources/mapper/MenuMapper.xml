@@ -31,6 +31,7 @@
         </if>
     </select>
 
+    <!--List<Menu> findChildrenMenuByPidAndUserId(@Param("parentId") Long parentId, @Param("userId") Long userId);-->
     <select id="findChildrenMenuByPidAndUserId" resultType="com.lt.health.entity.Menu">
         select
         <include refid="Base_Column_List"/>
@@ -39,6 +40,21 @@
             and id in (select menu_id from sys_roles_menus where role_id in (select sys_user_roles.role_id from
             sys_user_roles where user_id = #{userId}))
         </if>
+    </select>
+
+    <!--List<Menu> findByRoleId(@Param("roleId") Long roleId);-->
+    <select id="findByRoleId" resultType="com.lt.health.entity.Menu">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_menu where parent_id is null and id in (select menu_id from sys_roles_menus where role_id = #{roleId})
+    </select>
+
+    <!--List<Menu> findByRoleIdAndParentId(@Param("roleId") Long roleId, @Param("parentId") Long parentId);-->
+    <select id="findByRoleIdAndParentId" resultType="com.lt.health.entity.Menu">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_menu where parent_id = #{parentId} and id in (select menu_id from sys_roles_menus where role_id =
+        #{roleId});
     </select>
 
 </mapper>

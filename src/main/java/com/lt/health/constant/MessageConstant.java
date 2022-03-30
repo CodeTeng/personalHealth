@@ -77,6 +77,9 @@ public interface MessageConstant {
     String ROLE_DELETE_FAIL = "角色删除失败";
     String ROLE_UPDATE_FAIL = "角色修改失败";
     String ROLE_UPDATE_SUCCESS = "角色修改成功";
+    String ROLE_EXIST = "角色已存在";
+    String ROLE_DELETE_TIP_MENU = "删除失败，该角色下拥有菜单信息，请先删除对应的菜单信息！";
+    String ROLE_DELETE_TIP_PERMISSION = "删除失败，该角色下拥有权限信息，请先删除对应的权限信息！";
 
     String MENU_SELECT_SUCCESS = "菜单列表查询成功";
     String MENU_SELECT_FAIL = "菜单列表查询失败";
