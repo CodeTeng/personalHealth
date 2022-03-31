@@ -1,14 +1,15 @@
 package com.lt.health.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 运动咨询
+ * @author 狂小腾
  * @TableName sys_sport
  */
 @TableName(value ="sys_sport")
@@ -33,7 +34,8 @@ public class Sport implements Serializable {
     /**
      * 创建时间
      */
-    private String createTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date createTime;
 
     /**
      * 创建人
@@ -43,7 +45,8 @@ public class Sport implements Serializable {
     /**
      * 更新时间
      */
-    private String updateTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date updateTime;
 
     /**
      * 更新人
@@ -53,7 +56,8 @@ public class Sport implements Serializable {
     /**
      * 删除标记
      */
-    private Integer del;
+    @TableLogic
+    private Integer isDelete;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

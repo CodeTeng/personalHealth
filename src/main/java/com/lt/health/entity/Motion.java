@@ -9,10 +9,12 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * 运动表
+ * 运动项目表
+ *
+ * @author 狂小腾
  * @TableName sys_motion
  */
-@TableName(value ="sys_motion")
+@TableName(value = "sys_motion")
 @Data
 public class Motion implements Serializable {
     /**

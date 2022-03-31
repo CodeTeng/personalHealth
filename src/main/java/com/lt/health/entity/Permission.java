@@ -36,7 +36,7 @@ public class Permission implements Serializable {
     /**
      * 显示状态(0不显示、1显示)
      */
-    private Integer status;
+    private boolean status;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

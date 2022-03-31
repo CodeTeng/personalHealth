@@ -32,13 +32,24 @@ public class UserController {
     private RedisUtil redisUtil;
 
     /**
-     * 登录接口
+     * 普通登录
      *
      * @param loginUserDTO 登录参数请求体
      * @return 返回token，用token去获取资源
      */
     @PostMapping("/login")
     public Result login(@RequestBody LoginUserDTO loginUserDTO) {
+        return userService.login(loginUserDTO);
+    }
+
+    /**
+     * 短信登录
+     *
+     * @param loginUserDTO 登录参数请求体
+     * @return 返回token，用token去获取资源
+     */
+    @PostMapping("/sms/login")
+    public Result smsLogin(@RequestBody LoginUserDTO loginUserDTO) {
         return userService.login(loginUserDTO);
     }
 
@@ -76,7 +87,7 @@ public class UserController {
         Integer pageNumber = pageInfoDTO.getPageNumber();
         Integer pageSize = pageInfoDTO.getPageSize();
         if (StringUtils.isAnyBlank(String.valueOf(pageNumber), String.valueOf(pageSize))) {
-            return Result.fail(MessageConstant.USER_SELECT_FAIL);
+            return Result.fail(MessageConstant.PAGE_FAIL);
         }
         return userService.findPage(pageInfoDTO);
     }
@@ -117,7 +128,7 @@ public class UserController {
      * @param user 更新的用户信息
      * @return 修改提示信息
      */
-    @PostMapping("/update")
+    @PutMapping("/update")
     public Result update(@RequestBody User user) {
         // TODO 判断字段
         return userService.update(user);

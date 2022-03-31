@@ -7,6 +7,8 @@ import com.lt.health.service.ToolService;
 import com.lt.health.service.UserService;
 import com.lt.health.utils.MD5Util;
 import com.lt.health.utils.QiniuUtil;
+import com.lt.health.utils.RedisUtil;
+import com.lt.health.utils.SmsUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +44,12 @@ public class ToolController {
     @Autowired
     private QiniuUtil qiniuUtil;
 
+    @Autowired
+    private SmsUtil smsUtil;
+
+    @Autowired
+    private RedisUtil redisUtil;
+
     /**
      * 忘记密码 邮件找回
      *
@@ -70,7 +78,7 @@ public class ToolController {
     }
 
     /**
-     * 图片上传
+     * 七牛云图片上传
      */
     @PostMapping("/upload")
     public Result upload(@RequestBody MultipartFile file) throws IOException {
@@ -81,5 +89,21 @@ public class ToolController {
             return Result.success(MessageConstant.PIC_UPLOAD_SUCCESS, url);
         }
         return Result.fail(MessageConstant.PIC_UPLOAD_FAIL);
+    }
+
+    /**
+     * 发送手机验证码
+     *
+     * @param phoneNumber 手机号码
+     * @return 成功或失败信息
+     */
+    @PostMapping("/sms")
+    public Result sendSms(String phoneNumber) {
+        Random random = new Random();
+        int code = 100000 + random.nextInt(899999);
+        smsUtil.sendSms(phoneNumber, code);
+        // 存入redis中 并设置过期时间
+        redisUtil.setValueTime(phoneNumber + "sms", code, 5);
+        return Result.success(MessageConstant.PHONE_CODE_SEND_SUCCESS);
     }
 }

@@ -5,19 +5,19 @@
 <mapper namespace="com.lt.health.mapper.SportMapper">
 
     <resultMap id="BaseResultMap" type="com.lt.health.entity.Sport">
-            <id property="id" column="id" jdbcType="BIGINT"/>
-            <result property="title" column="title" jdbcType="VARCHAR"/>
-            <result property="content" column="content" jdbcType="VARCHAR"/>
-            <result property="createTime" column="create_time" jdbcType="VARCHAR"/>
-            <result property="createName" column="create_name" jdbcType="VARCHAR"/>
-            <result property="updateTime" column="update_time" jdbcType="VARCHAR"/>
-            <result property="updateName" column="update_name" jdbcType="VARCHAR"/>
-            <result property="del" column="del" jdbcType="TINYINT"/>
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="createName" column="create_name" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="updateName" column="update_name" jdbcType="VARCHAR"/>
+        <result property="isDelete" column="is_delete" jdbcType="TINYINT"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         id,title,content,
         create_time,create_name,update_time,
-        update_name,del
+        update_name,is_delete
     </sql>
 </mapper>

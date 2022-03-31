@@ -34,7 +34,7 @@ public class Role implements Serializable {
     /**
      * 显示状态(0不显示、1显示)
      */
-    private Integer status;
+    private boolean status;
 
     @TableLogic
     private Integer isDelete;

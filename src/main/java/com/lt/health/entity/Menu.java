@@ -1,9 +1,6 @@
 package com.lt.health.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -50,7 +47,7 @@ public class Menu implements Serializable {
     /**
      * 显示状态(0不显示、1显示)
      */
-    private Integer status;
+    private boolean status;
 
     /**
      * 子菜单

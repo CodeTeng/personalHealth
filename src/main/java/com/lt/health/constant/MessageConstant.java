@@ -7,6 +7,7 @@ package com.lt.health.constant;
  */
 public interface MessageConstant {
     String PAGE_SUCCESS = "分页查询成功";
+    String PAGE_FAIL = "分页查询失败";
     String LOGIN_SUCCESS = "登录成功";
     String LOGIN_FAIL = "登录失败";
     String LOGOUT_SUCCESS = "退出成功";
@@ -42,6 +43,12 @@ public interface MessageConstant {
     String UPDATE_SPORT_FAIL = "修改运动信息失败";
     String UPDATE_SPORT_SUCCESS = "修改运动信息成功";
     String CHOOSE_SPORT = "请选择运动项目";
+    String SPORT_CONSULT_INSERT_SUCCESS = "运动咨询插入成功";
+    String SPORT_CONSULT_INSERT_FAIL = "运动咨询插入失败";
+    String SPORT_CONSULT_UPDATE_SUCCESS = "运动咨询更新成功";
+    String SPORT_CONSULT_UPDATE_FAIL = "运动咨询更新失败";
+    String SPORT_CONSULT_DELETE_SUCCESS = "运动咨询删除成功";
+    String SPORT_CONSULT_DELETE_FAIL = "运动咨询删除失败";
 
     String DELETE_SPORT_FAIL = "删除运动项目失败";
     String DELETE_SPORT_SUCCESS = "删除运动项目成功";
@@ -90,6 +97,7 @@ public interface MessageConstant {
     String MENU_UPDATE_SUCCESS = "菜单修改成功";
     String MENU_UPDATE_FAIL = "菜单修改失败";
     String MENU_NO_EXIST = "菜单不存在";
+    String PARENT_MENU_SELECT_SUCCESS = "父级菜单查询成功";
 
     String PREMISSION_GET_SUCCESS = "权限查询成功";
     String PREMISSION_GET_FAIL = "权限查询失败";
@@ -101,4 +109,5 @@ public interface MessageConstant {
     String PREMISSION_UDPATE_FAIL = "权限修改失败";
 
     String COMPLETE_USER_INFO = "请按要求填写必填字段";
+    String PHONE_CODE_SEND_SUCCESS = "手机验证码发送成功";
 }
