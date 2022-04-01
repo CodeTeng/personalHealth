@@ -1,0 +1,148 @@
+2022-03-31 21:17:40.260  INFO 18876 --- [restartedMain] com.lt.health.PersonalHealthApplication  : Starting PersonalHealthApplication using Java 1.8.0_301 on LAPTOP-CV4IFMGA with PID 18876 (D:\javaProject2\myJava\personalHealth\target\classes started by 腾腾 in D:\javaProject2\myJava\personalHealth)
+2022-03-31 21:17:40.264  INFO 18876 --- [restartedMain] com.lt.health.PersonalHealthApplication  : The following profiles are active: dev
+2022-03-31 21:17:40.309  INFO 18876 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in D:\Program Files\my_java\maven_repository\com\sun\xml\bind\jaxb-core\2.3.0\jaxb-core-2.3.0.jar referenced one or more files that do not exist: file:/D:/Program%20Files/my_java/maven_repository/com/sun/xml/bind/jaxb-core/2.3.0/jaxb-api.jar
+2022-03-31 21:17:40.310  INFO 18876 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in D:\Program Files\my_java\maven_repository\com\sun\xml\bind\jaxb-impl\2.3.0\jaxb-impl-2.3.0.jar referenced one or more files that do not exist: file:/D:/Program%20Files/my_java/maven_repository/com/sun/xml/bind/jaxb-impl/2.3.0/jaxb-core.jar
+2022-03-31 21:17:40.310  INFO 18876 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-03-31 21:17:40.310  INFO 18876 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-03-31 21:17:41.095  INFO 18876 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-03-31 21:17:41.098  INFO 18876 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-03-31 21:17:41.134  INFO 18876 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 19 ms. Found 0 Redis repository interfaces.
+2022-03-31 21:17:41.577  INFO 18876 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@2086d0c9' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-31 21:17:41.582  INFO 18876 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-31 21:17:42.023  INFO 18876 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8000 (http)
+2022-03-31 21:17:42.032  INFO 18876 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-31 21:17:42.032  INFO 18876 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.48]
+2022-03-31 21:17:42.131  INFO 18876 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-03-31 21:17:42.132  INFO 18876 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1821 ms
+2022-03-31 21:17:42.673  WARN 18876 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.lt.health.entity.RolesMenus ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2022-03-31 21:17:42.688  WARN 18876 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.lt.health.entity.RolesPermissions ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2022-03-31 21:17:42.743  WARN 18876 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.lt.health.entity.UserRoles ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2022-03-31 21:17:42.762  WARN 18876 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.lt.health.entity.WxRun ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2022-03-31 21:17:45.181  INFO 18876 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/user/login'] with []
+2022-03-31 21:17:45.181  INFO 18876 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/user/logout'] with []
+2022-03-31 21:17:45.181  INFO 18876 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/oauth/**'] with []
+2022-03-31 21:17:45.181  INFO 18876 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/favicon.ico'] with []
+2022-03-31 21:17:45.181  INFO 18876 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/swagger-ui.html'] with []
+2022-03-31 21:17:45.181  INFO 18876 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/doc.html'] with []
+2022-03-31 21:17:45.181  INFO 18876 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/webjars/**'] with []
+2022-03-31 21:17:45.181  INFO 18876 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/swagger-resources/**'] with []
+2022-03-31 21:17:45.181  INFO 18876 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/v2/**'] with []
+2022-03-31 21:17:45.181  INFO 18876 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/configuration/ui'] with []
+2022-03-31 21:17:45.182  INFO 18876 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/configuration/security'] with []
+2022-03-31 21:17:45.182  INFO 18876 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/tool/forget/password'] with []
+2022-03-31 21:17:45.182  INFO 18876 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/tool/sms'] with []
+2022-03-31 21:17:45.182  INFO 18876 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/user/sms/login'] with []
+2022-03-31 21:17:45.182  INFO 18876 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/goods/batchExport'] with []
+2022-03-31 21:17:45.182  INFO 18876 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/mini/login'] with []
+2022-03-31 21:17:45.217  INFO 18876 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3e2ff291, org.springframework.security.web.context.SecurityContextPersistenceFilter@81c2fe2, org.springframework.security.web.header.HeaderWriterFilter@572bbbd4, org.springframework.security.web.authentication.logout.LogoutFilter@2604cbca, com.lt.health.config.security.filter.JwtAuthenticationFilter@1088e73, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@cf5c803, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3dfa8cd8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@61e7ac80, org.springframework.security.web.session.SessionManagementFilter@6725e877, org.springframework.security.web.access.ExceptionTranslationFilter@428225ef, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@43e39e9a]
+2022-03-31 21:17:46.311  INFO 18876 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-03-31 21:17:46.360  INFO 18876 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8000 (http) with context path ''
+2022-03-31 21:17:46.374  INFO 18876 --- [restartedMain] com.lt.health.PersonalHealthApplication  : Started PersonalHealthApplication in 6.602 seconds (JVM running for 8.797)
+2022-03-31 21:19:04.599  INFO 18876 --- [http-nio-8000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-31 21:19:04.599  INFO 18876 --- [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-03-31 21:19:04.601  INFO 18876 --- [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-03-31 21:21:06.741 ERROR 18876 --- [http-nio-8000-exec-6] com.lt.health.utils.RedisUtil            : redis值不存在-->Unable to connect to Redis; nested exception is io.lettuce.core.RedisConnectionException: Unable to connect to 127.0.0.1:6379
+2022-03-31 21:21:06.769  INFO 18876 --- [http-nio-8000-exec-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-03-31 21:21:07.141  INFO 18876 --- [http-nio-8000-exec-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-03-31 21:21:09.418 ERROR 18876 --- [http-nio-8000-exec-6] com.lt.health.utils.RedisUtil            : 设置缓存并指定过期时间异常-->Unable to connect to Redis; nested exception is io.lettuce.core.RedisConnectionException: Unable to connect to 127.0.0.1:6379
+2022-03-31 21:21:09.530  INFO 18876 --- [http-nio-8000-exec-6] com.lt.health.aop                        : URL : /test/hello
+2022-03-31 21:21:09.530  INFO 18876 --- [http-nio-8000-exec-6] com.lt.health.aop                        : HTTP_METHOD : GET
+2022-03-31 21:21:09.531  INFO 18876 --- [http-nio-8000-exec-6] com.lt.health.aop                        : IP : 0:0:0:0:0:0:0:1
+2022-03-31 21:21:09.534  INFO 18876 --- [http-nio-8000-exec-6] com.lt.health.aop                        : CLASS_METHOD : com.lt.health.controller.TestController.hello
+2022-03-31 21:21:09.534  INFO 18876 --- [http-nio-8000-exec-6] com.lt.health.aop                        : ARGS : [liteng]
+2022-03-31 21:21:09.539  INFO 18876 --- [http-nio-8000-exec-6] com.lt.health.aop                        : RESPONSE : Helloliteng
+2022-03-31 21:21:56.232  INFO 18876 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-03-31 21:21:56.253  INFO 18876 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-03-31 21:22:04.984  INFO 20884 --- [restartedMain] com.lt.health.PersonalHealthApplication  : Starting PersonalHealthApplication using Java 1.8.0_301 on LAPTOP-CV4IFMGA with PID 20884 (D:\javaProject2\myJava\personalHealth\target\classes started by 腾腾 in D:\javaProject2\myJava\personalHealth)
+2022-03-31 21:22:04.994  INFO 20884 --- [restartedMain] com.lt.health.PersonalHealthApplication  : The following profiles are active: dev
+2022-03-31 21:22:05.104  INFO 20884 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in D:\Program Files\my_java\maven_repository\com\sun\xml\bind\jaxb-core\2.3.0\jaxb-core-2.3.0.jar referenced one or more files that do not exist: file:/D:/Program%20Files/my_java/maven_repository/com/sun/xml/bind/jaxb-core/2.3.0/jaxb-api.jar
+2022-03-31 21:22:05.104  INFO 20884 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in D:\Program Files\my_java\maven_repository\com\sun\xml\bind\jaxb-impl\2.3.0\jaxb-impl-2.3.0.jar referenced one or more files that do not exist: file:/D:/Program%20Files/my_java/maven_repository/com/sun/xml/bind/jaxb-impl/2.3.0/jaxb-core.jar
+2022-03-31 21:22:05.105  INFO 20884 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-03-31 21:22:05.106  INFO 20884 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-03-31 21:22:06.645  INFO 20884 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-03-31 21:22:06.649  INFO 20884 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-03-31 21:22:06.740  INFO 20884 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 55 ms. Found 0 Redis repository interfaces.
+2022-03-31 21:22:07.762  INFO 20884 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@1d72ec5e' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-31 21:22:07.772  INFO 20884 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-31 21:22:08.998  INFO 20884 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8000 (http)
+2022-03-31 21:22:09.026  INFO 20884 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-31 21:22:09.027  INFO 20884 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.48]
+2022-03-31 21:22:09.356  INFO 20884 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-03-31 21:22:09.357  INFO 20884 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4248 ms
+2022-03-31 21:22:10.962  WARN 20884 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.lt.health.entity.RolesMenus ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2022-03-31 21:22:11.004  WARN 20884 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.lt.health.entity.RolesPermissions ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2022-03-31 21:22:11.196  WARN 20884 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.lt.health.entity.UserRoles ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2022-03-31 21:22:11.243  WARN 20884 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.lt.health.entity.WxRun ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2022-03-31 21:22:17.877  INFO 20884 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/user/login'] with []
+2022-03-31 21:22:17.877  INFO 20884 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/user/logout'] with []
+2022-03-31 21:22:17.877  INFO 20884 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/oauth/**'] with []
+2022-03-31 21:22:17.877  INFO 20884 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/favicon.ico'] with []
+2022-03-31 21:22:17.877  INFO 20884 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/swagger-ui.html'] with []
+2022-03-31 21:22:17.877  INFO 20884 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/doc.html'] with []
+2022-03-31 21:22:17.877  INFO 20884 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/webjars/**'] with []
+2022-03-31 21:22:17.878  INFO 20884 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/swagger-resources/**'] with []
+2022-03-31 21:22:17.878  INFO 20884 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/v2/**'] with []
+2022-03-31 21:22:17.878  INFO 20884 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/configuration/ui'] with []
+2022-03-31 21:22:17.878  INFO 20884 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/configuration/security'] with []
+2022-03-31 21:22:17.878  INFO 20884 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/tool/forget/password'] with []
+2022-03-31 21:22:17.878  INFO 20884 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/tool/sms'] with []
+2022-03-31 21:22:17.878  INFO 20884 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/user/sms/login'] with []
+2022-03-31 21:22:17.878  INFO 20884 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/goods/batchExport'] with []
+2022-03-31 21:22:17.879  INFO 20884 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/mini/login'] with []
+2022-03-31 21:22:17.973  INFO 20884 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@456fbbbd, org.springframework.security.web.context.SecurityContextPersistenceFilter@600e8e94, org.springframework.security.web.header.HeaderWriterFilter@768dcd5e, org.springframework.security.web.authentication.logout.LogoutFilter@7ad06c85, com.lt.health.config.security.filter.JwtAuthenticationFilter@18adb8d0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@a8aecac, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@227546ba, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3c337d1b, org.springframework.security.web.session.SessionManagementFilter@33e7b417, org.springframework.security.web.access.ExceptionTranslationFilter@544e43f0, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2afa7bf0]
+2022-03-31 21:22:20.003  INFO 20884 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-03-31 21:22:20.156  INFO 20884 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8000 (http) with context path ''
+2022-03-31 21:22:20.195  INFO 20884 --- [restartedMain] com.lt.health.PersonalHealthApplication  : Started PersonalHealthApplication in 16.356 seconds (JVM running for 19.476)
+2022-03-31 21:22:49.413  INFO 18584 --- [restartedMain] com.lt.health.PersonalHealthApplication  : Starting PersonalHealthApplication using Java 1.8.0_301 on LAPTOP-CV4IFMGA with PID 18584 (D:\javaProject2\myJava\personalHealth\target\classes started by 腾腾 in D:\javaProject2\myJava\personalHealth)
+2022-03-31 21:22:49.417  INFO 18584 --- [restartedMain] com.lt.health.PersonalHealthApplication  : The following profiles are active: dev
+2022-03-31 21:22:49.496  INFO 18584 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in D:\Program Files\my_java\maven_repository\com\sun\xml\bind\jaxb-core\2.3.0\jaxb-core-2.3.0.jar referenced one or more files that do not exist: file:/D:/Program%20Files/my_java/maven_repository/com/sun/xml/bind/jaxb-core/2.3.0/jaxb-api.jar
+2022-03-31 21:22:49.496  INFO 18584 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in D:\Program Files\my_java\maven_repository\com\sun\xml\bind\jaxb-impl\2.3.0\jaxb-impl-2.3.0.jar referenced one or more files that do not exist: file:/D:/Program%20Files/my_java/maven_repository/com/sun/xml/bind/jaxb-impl/2.3.0/jaxb-core.jar
+2022-03-31 21:22:49.496  INFO 18584 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-03-31 21:22:49.497  INFO 18584 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-03-31 21:22:51.210  INFO 18584 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-03-31 21:22:51.214  INFO 18584 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-03-31 21:22:51.283  INFO 18584 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 38 ms. Found 0 Redis repository interfaces.
+2022-03-31 21:22:52.071  INFO 18584 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@3d37f454' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-31 21:22:52.077  INFO 18584 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-31 21:22:52.773  INFO 18584 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8000 (http)
+2022-03-31 21:22:52.786  INFO 18584 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-31 21:22:52.786  INFO 18584 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.48]
+2022-03-31 21:22:52.950  INFO 18584 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-03-31 21:22:52.950  INFO 18584 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3452 ms
+2022-03-31 21:22:53.931  WARN 18584 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.lt.health.entity.RolesMenus ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2022-03-31 21:22:53.954  WARN 18584 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.lt.health.entity.RolesPermissions ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2022-03-31 21:22:54.058  WARN 18584 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.lt.health.entity.UserRoles ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2022-03-31 21:22:54.081  WARN 18584 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.lt.health.entity.WxRun ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2022-03-31 21:22:57.622  INFO 18584 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/user/login'] with []
+2022-03-31 21:22:57.623  INFO 18584 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/user/logout'] with []
+2022-03-31 21:22:57.623  INFO 18584 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/oauth/**'] with []
+2022-03-31 21:22:57.623  INFO 18584 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/favicon.ico'] with []
+2022-03-31 21:22:57.623  INFO 18584 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/swagger-ui.html'] with []
+2022-03-31 21:22:57.623  INFO 18584 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/doc.html'] with []
+2022-03-31 21:22:57.623  INFO 18584 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/webjars/**'] with []
+2022-03-31 21:22:57.624  INFO 18584 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/swagger-resources/**'] with []
+2022-03-31 21:22:57.624  INFO 18584 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/v2/**'] with []
+2022-03-31 21:22:57.624  INFO 18584 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/configuration/ui'] with []
+2022-03-31 21:22:57.624  INFO 18584 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/configuration/security'] with []
+2022-03-31 21:22:57.624  INFO 18584 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/tool/forget/password'] with []
+2022-03-31 21:22:57.624  INFO 18584 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/tool/sms'] with []
+2022-03-31 21:22:57.624  INFO 18584 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/user/sms/login'] with []
+2022-03-31 21:22:57.624  INFO 18584 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/goods/batchExport'] with []
+2022-03-31 21:22:57.625  INFO 18584 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Mvc [pattern='/mini/login'] with []
+2022-03-31 21:22:57.686  INFO 18584 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1106076c, org.springframework.security.web.context.SecurityContextPersistenceFilter@7aa90a8e, org.springframework.security.web.header.HeaderWriterFilter@73a696d8, org.springframework.security.web.authentication.logout.LogoutFilter@6e94cf8f, com.lt.health.config.security.filter.JwtAuthenticationFilter@31ab59ca, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4077af5d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1d296d30, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2cb58cb1, org.springframework.security.web.session.SessionManagementFilter@3555f9b, org.springframework.security.web.access.ExceptionTranslationFilter@75391d99, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@37b147ea]
+2022-03-31 21:22:59.288  INFO 18584 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-03-31 21:22:59.387  INFO 18584 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8000 (http) with context path ''
+2022-03-31 21:22:59.413  INFO 18584 --- [restartedMain] com.lt.health.PersonalHealthApplication  : Started PersonalHealthApplication in 10.891 seconds (JVM running for 13.642)
+2022-03-31 21:23:15.686  INFO 18584 --- [http-nio-8000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-31 21:23:15.687  INFO 18584 --- [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-03-31 21:23:15.688  INFO 18584 --- [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-03-31 21:23:17.877  INFO 18584 --- [http-nio-8000-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-03-31 21:23:18.123  INFO 18584 --- [http-nio-8000-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-03-31 21:23:18.482  INFO 18584 --- [http-nio-8000-exec-1] com.lt.health.aop                        : URL : /test/hello
+2022-03-31 21:23:18.483  INFO 18584 --- [http-nio-8000-exec-1] com.lt.health.aop                        : HTTP_METHOD : GET
+2022-03-31 21:23:18.483  INFO 18584 --- [http-nio-8000-exec-1] com.lt.health.aop                        : IP : 0:0:0:0:0:0:0:1
+2022-03-31 21:23:18.487  INFO 18584 --- [http-nio-8000-exec-1] com.lt.health.aop                        : CLASS_METHOD : com.lt.health.controller.TestController.hello
+2022-03-31 21:23:18.487  INFO 18584 --- [http-nio-8000-exec-1] com.lt.health.aop                        : ARGS : [liteng]
+2022-03-31 21:23:18.491  INFO 18584 --- [http-nio-8000-exec-1] com.lt.health.aop                        : RESPONSE : Hello liteng
+2022-03-31 23:39:59.909  INFO 18584 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-03-31 23:39:59.936  INFO 18584 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

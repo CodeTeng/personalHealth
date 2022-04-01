@@ -14,6 +14,14 @@ spring:
   servlet:
     multipart:
       max-file-size: 30MB
+  # 日志输出彩色
+  output:
+    ansi:
+      enabled: detect
+  # AOP 配置
+  aop:
+    auto: true
+    proxy-target-class: true
 
 # 配置MybatisPlus
 mybatis-plus:
@@ -65,3 +73,8 @@ mini:
   # 密钥
   appid: wx764a8c18407bff62
   secret: 6b7173449d443d8299fd3ac5de837d60
+
+# 日志文件的配置
+logging:
+  file:
+    path: my.log
