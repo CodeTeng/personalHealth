@@ -29,12 +29,12 @@ public class Motion implements Serializable {
     private String name;
 
     /**
-     * 使用年龄
+     * 适用年龄
      */
     private String applicableAge;
 
     /**
-     * 收益部位(身体)
+     * 身体收益部位
      */
     private String beneficialPosition;
 

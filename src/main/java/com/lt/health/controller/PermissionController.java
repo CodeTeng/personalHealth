@@ -1,9 +1,11 @@
 package com.lt.health.controller;
 
+import com.lt.health.constant.MessageConstant;
 import com.lt.health.constant.Result;
 import com.lt.health.entity.Permission;
 import com.lt.health.entity.dto.PageInfoDTO;
 import com.lt.health.service.PermissionService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,6 +39,11 @@ public class PermissionController {
      */
     @PostMapping("/findPage")
     public Result findPage(@RequestBody PageInfoDTO pageInfoDTO) {
+        Integer pageNumber = pageInfoDTO.getPageNumber();
+        Integer pageSize = pageInfoDTO.getPageSize();
+        if (StringUtils.isAnyBlank(String.valueOf(pageNumber), String.valueOf(pageSize))) {
+            return Result.fail(MessageConstant.PAGE_FAIL);
+        }
         return permissionService.findPage(pageInfoDTO);
     }
 

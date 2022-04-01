@@ -43,12 +43,23 @@ public interface MessageConstant {
     String UPDATE_SPORT_FAIL = "修改运动信息失败";
     String UPDATE_SPORT_SUCCESS = "修改运动信息成功";
     String CHOOSE_SPORT = "请选择运动项目";
-    String SPORT_CONSULT_INSERT_SUCCESS = "运动咨询插入成功";
-    String SPORT_CONSULT_INSERT_FAIL = "运动咨询插入失败";
+
+    String SPORT_CONSULT_INSERT_SUCCESS = "运动咨询添加成功";
+    String SPORT_CONSULT_INSERT_FAIL = "运动咨询添加失败";
     String SPORT_CONSULT_UPDATE_SUCCESS = "运动咨询更新成功";
     String SPORT_CONSULT_UPDATE_FAIL = "运动咨询更新失败";
     String SPORT_CONSULT_DELETE_SUCCESS = "运动咨询删除成功";
     String SPORT_CONSULT_DELETE_FAIL = "运动咨询删除失败";
+
+    String MOTION_SELECT_FAIL = "运动项目查询失败";
+    String MOTION_SELECT_SUCCESS = "运动项目查询成功";
+    String MOTION_INSERT_SUCCESS = "运动项目添加成功";
+    String MOTION_INSERT_FAIL = "运动项目添加失败";
+    String MOTION_UPDATE_SUCCESS = "运动项目更新成功";
+    String MOTION_UPDATE_FAIL = "运动项目更新失败";
+    String MOTION_DELETE_SUCCESS = "运动项目删除成功";
+    String MOTION_DELETE_FAIL = "运动项目删除失败";
+    String MOTION_INSERT_TIP = "运动项目已存在，请勿重复添加";
 
     String DELETE_SPORT_FAIL = "删除运动项目失败";
     String DELETE_SPORT_SUCCESS = "删除运动项目成功";
