@@ -27,9 +27,9 @@ public class WebLogAspect {
     private ThreadLocal<Long> startTime = new ThreadLocal<>();
 
     /**
-     * 切入点 TestController下的所有函数
+     * 切入点 TestController下的hello函数
      */
-    @Pointcut("execution(public * com.lt.health.controller.TestController.*(..))")
+    @Pointcut("execution(public * com.lt.health.controller.TestController.hello(..))")
     public void point() {}
 
     @Before("point()")

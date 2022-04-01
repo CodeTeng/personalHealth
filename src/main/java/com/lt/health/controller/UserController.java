@@ -1,7 +1,9 @@
 package com.lt.health.controller;
 
+import com.lt.health.aop.log.SystemCrmLog;
 import com.lt.health.constant.MessageConstant;
 import com.lt.health.constant.Result;
+import com.lt.health.constant.TableNameConstant;
 import com.lt.health.constant.UserConstant;
 import com.lt.health.entity.User;
 import com.lt.health.entity.dto.LoginUserDTO;
@@ -38,6 +40,7 @@ public class UserController {
      * @return 返回token，用token去获取资源
      */
     @PostMapping("/login")
+    @SystemCrmLog(description = "进行登录操作", tableName = TableNameConstant.USER_TABLE_NAME)
     public Result login(@RequestBody LoginUserDTO loginUserDTO) {
         return userService.login(loginUserDTO);
     }
@@ -49,6 +52,7 @@ public class UserController {
      * @return 返回token，用token去获取资源
      */
     @PostMapping("/sms/login")
+    @SystemCrmLog(description = "进行短信登录", tableName = TableNameConstant.USER_TABLE_NAME)
     public Result smsLogin(@RequestBody LoginUserDTO loginUserDTO) {
         return userService.login(loginUserDTO);
     }
@@ -56,6 +60,7 @@ public class UserController {
     /**
      * 获取用户脱敏后的信息
      */
+    @SystemCrmLog(description = "获取用户信息操作", tableName = TableNameConstant.USER_TABLE_NAME)
     @GetMapping("/getInfo")
     public Result getUserInfo() {
         User user = SecurityUtil.getUser();
@@ -66,6 +71,7 @@ public class UserController {
      * 用户退出登录
      */
     @GetMapping("/logout")
+    @SystemCrmLog(description = "进行用户退出操作", tableName = TableNameConstant.USER_TABLE_NAME)
     public Result logout() {
         // 清除缓存
         redisUtil.delKey(UserConstant.USER_KEY_PRE + SecurityUtil.getUsername());
@@ -99,6 +105,7 @@ public class UserController {
      * @return 成功或者失败信息
      */
     @PostMapping("/insert")
+    @SystemCrmLog(description = "进行添加用户操作", tableName = TableNameConstant.USER_TABLE_NAME)
     public Result insert(@RequestBody User user) {
         String userName = user.getUserName();
         String password = user.getPassword();
@@ -129,8 +136,8 @@ public class UserController {
      * @return 修改提示信息
      */
     @PutMapping("/update")
+    @SystemCrmLog(description = "进行更新用户操作", tableName = TableNameConstant.USER_TABLE_NAME)
     public Result update(@RequestBody User user) {
-        // TODO 判断字段
         return userService.update(user);
     }
 
@@ -141,6 +148,7 @@ public class UserController {
      * @return 删除提示信息
      */
     @DeleteMapping("/delete/{id}")
+    @SystemCrmLog(description = "进行添加删除操作", tableName = TableNameConstant.USER_TABLE_NAME)
     public Result delete(@PathVariable("id") Long id) {
         return userService.delete(id);
     }

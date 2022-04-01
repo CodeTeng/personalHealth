@@ -1,7 +1,9 @@
 package com.lt.health.controller;
 
+import com.lt.health.aop.log.SystemCrmLog;
 import com.lt.health.constant.MessageConstant;
 import com.lt.health.constant.Result;
+import com.lt.health.constant.TableNameConstant;
 import com.lt.health.entity.Sport;
 import com.lt.health.entity.dto.PageInfoDTO;
 import com.lt.health.service.SportService;
@@ -44,6 +46,7 @@ public class SportController {
      * @return 详细信息
      */
     @GetMapping("/{id}")
+    @SystemCrmLog(description = "进行获取运动咨询操作", tableName = TableNameConstant.SPORT_TABLE_NAME)
     public Result getInfo(@PathVariable Long id) {
         return sportService.getInfo(id);
     }
@@ -55,6 +58,7 @@ public class SportController {
      * @return 成功或者失败信息
      */
     @PostMapping("/insert")
+    @SystemCrmLog(description = "进行添加运动咨询操作", tableName = TableNameConstant.SPORT_TABLE_NAME)
     public Result insert(@RequestBody Sport sport) {
         return sportService.insert(sport);
     }
@@ -66,6 +70,7 @@ public class SportController {
      * @return 成功或者失败信息
      */
     @PutMapping("/update")
+    @SystemCrmLog(description = "进行更新运动咨询操作", tableName = TableNameConstant.SPORT_TABLE_NAME)
     public Result update(@RequestBody Sport sport) {
         return sportService.update(sport);
     }
@@ -78,6 +83,7 @@ public class SportController {
      * @return 删除提示信息
      */
     @DeleteMapping("/delete/{id}")
+    @SystemCrmLog(description = "进行删除运动咨询操作", tableName = TableNameConstant.SPORT_TABLE_NAME)
     public Result delete(@PathVariable("id") Long id) {
         return sportService.delete(id);
     }

@@ -28,14 +28,5 @@ public class SecurityContents {
 
             // 小程序相关
             "/mini/login",
-
-//            //发送手机验证码
-//            "/user/sendSms",
-//            //druid的
-//            "/druid/**",
-//
-//            //获取验证码
-//            "/captcha/**",
-//            "/getCaptchaOpen",
     };
 }

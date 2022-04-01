@@ -15,4 +15,10 @@ public interface UserConstant {
      * 用户缓存过期时间 5min
      */
     long EXPIRE_TIME = 5L;
+
+    /**
+     * 用户Session的key
+     */
+    String USER_SESSION_KEY = "userSession";
+
 }

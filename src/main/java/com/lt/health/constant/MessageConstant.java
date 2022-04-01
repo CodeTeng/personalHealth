@@ -121,4 +121,6 @@ public interface MessageConstant {
 
     String COMPLETE_USER_INFO = "请按要求填写必填字段";
     String PHONE_CODE_SEND_SUCCESS = "手机验证码发送成功";
+
+    String LOG_MESSAGE_SELECT_SUCCESS = "查询日志信息成功";
 }
