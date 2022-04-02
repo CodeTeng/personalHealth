@@ -15,7 +15,7 @@ public interface MessageConstant {
     String LOGIN_USERNAME_PASSWORD_FAIL = "用户名或密码输入错误";
     String LOGIN_NOT_ADMIN = "您不是管理员，不可以进入系统";
     String NOT_PERMISSION = "权限不足";
-    String LOGIN_NOT_STATE = "当前用户未激活";
+    String LOGIN_NOT_STATE = "当前用户未激活，请联系管理员";
     String UPLOAD_SUCCESS = "上传成功";
     String UPLOAD_FAIL = "上传失败";
     String FILE_READER_FAIL = "文件读取失败";
@@ -123,4 +123,9 @@ public interface MessageConstant {
     String PHONE_CODE_SEND_SUCCESS = "手机验证码发送成功";
 
     String LOG_MESSAGE_SELECT_SUCCESS = "查询日志信息成功";
+
+    String WX_STEP_FAILURE = "运动步数获取失败";
+    String WX_STEP_UPDATE_SUCCESS = "运动步数更新成功";
+    String WX_STEP_COUNT_SUCCESS = "微信步数统计查询成功";
+    String WX_UPDATE_INFO_TIP = "请传递小程序唯一标识";
 }

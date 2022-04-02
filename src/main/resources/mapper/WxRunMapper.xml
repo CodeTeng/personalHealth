@@ -5,12 +5,20 @@
 <mapper namespace="com.lt.health.mapper.WxRunMapper">
 
     <resultMap id="BaseResultMap" type="com.lt.health.entity.WxRun">
-            <result property="openid" column="openid" jdbcType="VARCHAR"/>
-            <result property="time" column="time" jdbcType="VARCHAR"/>
-            <result property="step" column="step" jdbcType="INTEGER"/>
+        <result property="openid" column="openid" jdbcType="VARCHAR"/>
+        <result property="time" column="time" jdbcType="VARCHAR"/>
+        <result property="step" column="step" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         openid,time,step
     </sql>
+
+    <!--void insertStep(@Param("wxRuns") List<WxRun> wxRuns);-->
+    <insert id="insertStep" parameterType="com.lt.health.entity.WxRun">
+        insert into sys_wx_run values
+        <foreach collection="wxRuns" item="wxRun" separator=",">
+            (#{wxRun.openid}, #{wxRun.time}, #{wxRun.step})
+        </foreach>
+    </insert>
 </mapper>

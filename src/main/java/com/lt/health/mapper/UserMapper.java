@@ -2,6 +2,7 @@ package com.lt.health.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.lt.health.entity.User;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
@@ -29,8 +30,23 @@ public interface UserMapper extends BaseMapper<User> {
      * @param email    邮箱
      * @param password 加密后的密码
      */
-    @Update("update sys_user set user_password = #{password} where email = #{email}")
+    @Update("update sys_user set password = #{password} where email = #{email}")
     void updatePasswordByMail(@Param("email") String email, @Param("password") String password);
+
+    /**
+     * 插入WX用户的openid
+     *
+     * @param openid WX用户的唯一标识
+     */
+    @Insert("insert into sys_user(open_id, user_status) values (#{openid}, 0)")
+    void insertOpenid(@Param("openid") String openid);
+
+    /**
+     * 根据openid更新用户信息
+     *
+     * @param user 用户信息
+     */
+    void updateByOpenId(User user);
 }
 
 

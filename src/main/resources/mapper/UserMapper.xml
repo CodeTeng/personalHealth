@@ -30,6 +30,29 @@
         create_time,update_time,is_delete
     </sql>
 
+    <!--void updateByOpenId(@Param("user") User user);-->
+    <update id="updateByOpenId" parameterType="com.lt.health.entity.User">
+        update sys_user
+        <set>
+            <if test="nickName != null">
+                nick_name = #{nickName},
+            </if>
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+            <if test="avatarUrl != null">
+                avatar_url = #{avatarUrl},
+            </if>
+            <if test="address != null">
+                address = #{address},
+            </if>
+            <if test="phoneNumber != null">
+                phone_number = #{phoneNumber},
+            </if>
+        </set>
+        where open_id=#{openId}
+    </update>
+
     <!--User findByUserName(@Param("username") String username)-->
     <select id="findByUserName" resultType="com.lt.health.entity.User">
         select

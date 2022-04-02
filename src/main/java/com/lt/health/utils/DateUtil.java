@@ -4,74 +4,65 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 
 /**
- * @description: 事件格式转换工具类
+ * @description: 时间格式转换工具类
  * @author: 狂小腾
  * @date: 2022/3/22 9:06
  */
 public class DateUtil {
-    private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-    private static SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private static final String YYYY_MM_DD = "yyyy-MM-dd";
 
-    public static String getNowDate() {
+    private static final String YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
+
+    /**
+     * 返回当前时间字符串
+     *
+     * @return 当前时间字符串---年月日
+     */
+    public static String getDate() {
+        SimpleDateFormat format = new SimpleDateFormat(YYYY_MM_DD);
         return format.format(new Date());
     }
 
-    public static String getNowDateTime() {
-        return format2.format(new Date());
+    /**
+     * 返回当前时间字符串 年月日时分秒
+     *
+     * @return 当前时间字符串---年月日十分秒
+     */
+    public static String getDateTime() {
+        SimpleDateFormat format = new SimpleDateFormat(YYYY_MM_DD_HH_MM_SS);
+        return format.format(new Date());
     }
 
     /**
-     * 获取半年前时间
+     * 返回当前时间字符串 年月日时分秒
      */
-    public static String getHalfYearAgo() {
-        //创建一个日历对象
-        Calendar c = Calendar.getInstance();
-        //设置当前时间
-        c.setTime(new Date());
-        //设置6个月前
-        c.add(Calendar.MONTH, -6);
-        Date time = c.getTime();
-        return format.format(time);
+    public static String parseDateTime(Date date, String format) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat(format);
+        return dateFormat.format(date);
     }
 
     /**
-     * 获取1年前时间
+     * 将时间字符串转换为时间对象
      */
-    public static String getOneYearAgo() {
-        //创建一个日历对象
-        Calendar c = Calendar.getInstance();
-        //设置当前时间
-        c.setTime(new Date());
-        //设置1年前
-        c.add(Calendar.YEAR, -1);
-        Date time = c.getTime();
-        return format.format(time);
+    public static Date formatDate(String time, String format) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat(format);
+        try {
+            return dateFormat.parse(time);
+        } catch (ParseException e) {
+            return null;
+        }
     }
 
     /**
-     * 获取3年前时间
+     * 传递10位时间戳返回正常的YYYY-MM-DD的格式
      */
-    public static String getThreeYearAgo() {
-        //创建一个日历对象
-        Calendar c = Calendar.getInstance();
-        //设置当前时间
-        c.setTime(new Date());
-        //设置1年前
-        c.add(Calendar.YEAR, -3);
-        Date time = c.getTime();
-        return format.format(time);
+    public static String timeStampConvertString(long timestamp) {
+        Date date = new Date(timestamp * 1000);
+        return parseDateTime(date, YYYY_MM_DD);
     }
-
-    /**
-     * 将时间戳转换为时间
-     */
-    public static String stampToDate(Long s) {
-        Date date = new Date(s);
-        return format.format(date);
-    }
-
 
     /**
      * 传入时间字符串和天数
@@ -80,48 +71,25 @@ public class DateUtil {
      * @param date 时间字符串
      * @param day  天数
      */
-    public static String getWeekBeforeDate(String date, int day) throws ParseException {
-        Date parse = format.parse(date);
+    public static String getWeekBeforeDate(String date, int day) {
         Calendar cal = Calendar.getInstance();
-        cal.setTime(parse);
+        cal.setTime(Objects.requireNonNull(formatDate(date, YYYY_MM_DD)));
         cal.add(Calendar.DATE, -day);
         Date time = cal.getTime();
-        return format.format(time);
+        return parseDateTime(time, YYYY_MM_DD);
     }
 
     /**
      * 根据时间得到本周是星期几
      */
-    public static int getWeekOfDate(String date) throws ParseException {
+    public static int getWeekOfDate(String date) {
         int[] week = {7, 1, 2, 3, 4, 5, 6};
         Calendar cal = Calendar.getInstance();
-        cal.setTime(format.parse(date));
+        cal.setTime(Objects.requireNonNull(formatDate(date, YYYY_MM_DD)));
         int w = cal.get(Calendar.DAY_OF_WEEK) - 1;
         if (w < 0) {
             w = 0;
         }
         return week[w];
     }
-
-    public static void main(String[] args) throws ParseException {
-        //System.out.println(getWeekBeforeDate("2021-6-22", -1));
-        //System.out.println(getWeekOfDate("2021-6-22"));
-        String date = getNowDate();
-        int week = getWeekOfDate(date);
-        String date1 = getWeekBeforeDate(date, week - 1);
-        System.out.println("第一周周" + week + ":" + date + "-->周一" + date1);
-        //第二周
-        String date2 = getWeekBeforeDate(date, week);
-        String week2 = getWeekBeforeDate(date2, 6);
-        System.out.println("第二周周天:" + date2 + "-->周一：" + week2);
-
-        String date3 = getWeekBeforeDate(week2, 1);
-        String week3 = getWeekBeforeDate(date3, 6);
-        System.out.println("第三周周天:" + date3 + "-->周一：" + week3);
-
-        String date4 = getWeekBeforeDate(week3, 1);
-        String week4 = getWeekBeforeDate(date4, 6);
-        System.out.println("第四周周天:" + date4 + "-->周一：" + week4);
-    }
-
 }

@@ -60,4 +60,21 @@ public interface UserService extends IService<User> {
      * @return 删除提示信息
      */
     Result delete(Long id);
+
+    /**
+     * WX小程序登录
+     *
+     * @param openid     WX用户的唯一标识
+     * @param sessionKey 会话密钥
+     * @return token openid sessionKey
+     */
+    Result miniLogin(String openid, String sessionKey);
+
+    /**
+     * 根据openid更新用户信息
+     *
+     * @param user 用户信息
+     * @return 成功或失败信息
+     */
+    Result updateInfoByOpenid(User user);
 }

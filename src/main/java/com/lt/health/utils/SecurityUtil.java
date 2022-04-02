@@ -30,7 +30,6 @@ public class SecurityUtil {
         }
         // 用户脱敏
         user.setPassword(null);
-        user.setOpenId(null);
         return user;
     }
 

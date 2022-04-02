@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lt.health.config.security.service.UserDetailServiceImpl;
 import com.lt.health.constant.MessageConstant;
 import com.lt.health.constant.Result;
+import com.lt.health.constant.UserConstant;
 import com.lt.health.entity.Role;
 import com.lt.health.entity.User;
 import com.lt.health.entity.UserRoles;
@@ -225,6 +226,45 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         log.info("3.删除用户信息");
         userMapper.deleteById(id);
         return Result.success(MessageConstant.DELETE_USER_SUCCESS);
+    }
+
+    @Override
+    public Result miniLogin(String openid, String sessionKey) {
+        log.info("根据WX用户的唯一标识获取用户");
+        UserDetails userDetails = userDetailService.loadUserByUsername(openid);
+        if (userDetails == null) {
+            // 插入openid
+            userMapper.insertOpenid(openid);
+            userDetails = userDetailService.loadUserByUsername(openid);
+        }
+        if (!userDetails.isEnabled()) {
+            return Result.fail(MessageConstant.LOGIN_NOT_STATE);
+        }
+        log.info("微信小程序登录成功，在security对象中存入登陆者信息");
+        UsernamePasswordAuthenticationToken authenticationToken
+                = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+        log.info("根据登录信息生成token");
+        // 借助jwt申城token
+        String token = jwtTokenUtil.generateToken(userDetails);
+        Map<String, Object> map = new HashMap<>(4);
+        map.put("tokenHead", tokenHead);
+        map.put("token", token);
+        map.put(UserConstant.USER_KEY_PRE, userDetails);
+        map.put("openid", openid);
+        map.put("sessionKey", sessionKey);
+        return Result.success(MessageConstant.LOGIN_SUCCESS, map);
+    }
+
+    @Override
+    public Result updateInfoByOpenid(User user) {
+        if (StringUtils.isBlank(user.getOpenId())) {
+            return Result.fail(MessageConstant.WX_UPDATE_INFO_TIP);
+        }
+        // 清除用户缓存，从新获取
+        redisUtil.delKey("username_" + user.getOpenId());
+        userMapper.updateByOpenId(user);
+        return Result.success(MessageConstant.UPDATE_USER_SUCCESS);
     }
 }
 
