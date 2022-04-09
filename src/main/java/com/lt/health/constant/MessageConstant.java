@@ -128,4 +128,22 @@ public interface MessageConstant {
     String WX_STEP_UPDATE_SUCCESS = "运动步数更新成功";
     String WX_STEP_COUNT_SUCCESS = "微信步数统计查询成功";
     String WX_UPDATE_INFO_TIP = "请传递小程序唯一标识";
+
+    String FOOD_LIST_BATCH_FAIL = "菜品列表导入失败！";
+    String FOOD_INSERT_SUCCESS = "菜品添加成功";
+    String FOOD_INSERT_FAIL = "菜品添加失败";
+    String FOOD_UPDATE_SUCCESS = "菜品更新成功";
+    String FOOD_UPDATE_FAIL = "菜品更新失败";
+    String FOOD_DELETE_SUCCESS = "菜品删除成功";
+    String FOOD_DELETE_FAIL = "菜品删除失败";
+    String FOOD_SELECT_SUCCESS = "菜品查询成功";
+    String FOOD_SELECT_FAIL = "菜品查询失败";
+
+    String FOOD_TYPE_INSERT_FAIL = "该食物分类已存在，添加失败";
+    String FOOD_TYPE_INSERT_SUCCESS = "食物分类添加成功";
+    String FOOD_TYPE_UPDATE_FAIL = "食物分类更新失败";
+    String FOOD_TYPE_UPDATE_SUCCESS = "食物分类更新成功";
+    String FOOD_TYPE_DELETE_FAIL = "食物分类删除失败";
+    String FOOD_TYPE_DELETE_SUCCESS = "食物分类删除成功";
+    String FOOD_TYPE_SELECT_SUCCESS = "食物分类信息查询成功";
 }

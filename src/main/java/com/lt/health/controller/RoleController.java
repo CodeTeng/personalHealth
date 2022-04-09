@@ -5,6 +5,8 @@ import com.lt.health.constant.Result;
 import com.lt.health.entity.Role;
 import com.lt.health.entity.dto.PageInfoDTO;
 import com.lt.health.service.RoleService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/role")
+@Api(tags = "用户角色控制接口")
 public class RoleController {
 
     @Autowired
@@ -36,6 +39,7 @@ public class RoleController {
      * @return 分页结果集
      */
     @PostMapping("/findPage")
+    @ApiOperation("角色分页查询接口")
     public Result findPage(@RequestBody PageInfoDTO pageInfoDTO) {
         Integer pageNumber = pageInfoDTO.getPageNumber();
         Integer pageSize = pageInfoDTO.getPageSize();
@@ -52,6 +56,7 @@ public class RoleController {
      * @return 成功或者失败信息
      */
     @PostMapping("/insert")
+    @ApiOperation("添加角色接口")
     public Result insert(@RequestBody Role role) {
         String label = role.getLabel();
         String code = role.getCode();
@@ -68,6 +73,7 @@ public class RoleController {
      * @return 修改提示信息
      */
     @PutMapping("/update")
+    @ApiOperation("修改角色接口")
     public Result update(@RequestBody Role role) {
         return roleService.update(role);
     }
@@ -79,6 +85,7 @@ public class RoleController {
      * @return 删除提示信息
      */
     @DeleteMapping("/delete/{id}")
+    @ApiOperation("删除角色接口")
     public Result delete(@PathVariable("id") Long roleId) {
         return roleService.delete(roleId);
     }

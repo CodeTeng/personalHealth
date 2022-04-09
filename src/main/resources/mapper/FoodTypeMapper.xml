@@ -5,12 +5,29 @@
 <mapper namespace="com.lt.health.mapper.FoodTypeMapper">
 
     <resultMap id="BaseResultMap" type="com.lt.health.entity.FoodType">
-            <id property="id" column="id" jdbcType="BIGINT"/>
-            <result property="title" column="title" jdbcType="VARCHAR"/>
-            <result property="icon" column="icon" jdbcType="VARCHAR"/>
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="icon" column="icon" jdbcType="VARCHAR"/>
+        <collection property="foods" select="findChildren" column="id" ofType="com.lt.health.entity.FoodType"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         id,title,icon
     </sql>
+
+    <!--List<FoodType> findPage(@Param("title") String queryString);-->
+    <select id="findPage" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_food_type
+        <if test="title != null and title.length > 0">
+            where title LIKE CONCAT('%', #{title}, '%')
+        </if>
+    </select>
+
+    <select id="findChildren" parameterType="int" resultType="com.lt.health.entity.Food">
+        select *
+        from sys_food
+        where type_id = #{id}
+    </select>
 </mapper>

@@ -5,6 +5,8 @@ import com.lt.health.constant.Result;
 import com.lt.health.entity.Permission;
 import com.lt.health.entity.dto.PageInfoDTO;
 import com.lt.health.service.PermissionService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/permission")
+@Api(tags = "数据权限接口")
 public class PermissionController {
 
     @Autowired
@@ -27,6 +30,7 @@ public class PermissionController {
      * @return 返回结果
      */
     @GetMapping("/findAll")
+    @ApiOperation("查看所有权限接口")
     public Result findAll() {
         return permissionService.findAll();
     }
@@ -38,6 +42,7 @@ public class PermissionController {
      * @return 分页结果
      */
     @PostMapping("/findPage")
+    @ApiOperation("数据权限分页查询接口")
     public Result findPage(@RequestBody PageInfoDTO pageInfoDTO) {
         Integer pageNumber = pageInfoDTO.getPageNumber();
         Integer pageSize = pageInfoDTO.getPageSize();
@@ -54,6 +59,7 @@ public class PermissionController {
      * @return 成功或失败结果
      */
     @PostMapping("/insert")
+    @ApiOperation("添加数据权限接口")
     public Result insert(@RequestBody Permission permission) {
         return permissionService.insert(permission);
     }
@@ -65,6 +71,7 @@ public class PermissionController {
      * @return 成功或失败的结果
      */
     @PutMapping("/update")
+    @ApiOperation("修改数据权限接口")
     public Result update(@RequestBody Permission permission) {
         return permissionService.update(permission);
     }
@@ -76,6 +83,7 @@ public class PermissionController {
      * @return 成功或失败结果
      */
     @DeleteMapping("/delete/{id}")
+    @ApiOperation("删除数据权限接口")
     public Result delete(@PathVariable("id") Long id) {
         return permissionService.delete(id);
     }

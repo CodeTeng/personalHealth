@@ -49,7 +49,11 @@ public class JwtTokenUtil {
      * 从token中获取用户名
      */
     public String getUserNameFromToken(String token) {
-        return getTokenBody(token).getSubject();
+        Claims claims = this.getTokenBody(token);
+        if (claims == null) {
+            throw new RuntimeException("获取用户名失败");
+        }
+        return claims.getSubject();
     }
 
     /**

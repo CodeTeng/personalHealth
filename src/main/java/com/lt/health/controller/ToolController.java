@@ -1,7 +1,9 @@
 package com.lt.health.controller;
 
+import com.lt.health.aop.log.SystemCrmLog;
 import com.lt.health.constant.MessageConstant;
 import com.lt.health.constant.Result;
+import com.lt.health.constant.TableNameConstant;
 import com.lt.health.entity.dto.MailDTO;
 import com.lt.health.service.ToolService;
 import com.lt.health.service.UserService;
@@ -9,6 +11,8 @@ import com.lt.health.utils.MD5Util;
 import com.lt.health.utils.QiniuUtil;
 import com.lt.health.utils.RedisUtil;
 import com.lt.health.utils.SmsUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +34,7 @@ import java.util.Random;
 @RestController
 @RequestMapping("/tool")
 @Slf4j
+@Api(tags = "工具接口")
 public class ToolController {
 
     @Autowired
@@ -57,6 +62,8 @@ public class ToolController {
      * @return 邮件发送的结果 成功或失败
      */
     @PostMapping("/forget/password")
+    @ApiOperation("忘记密码邮件找回接口")
+    @SystemCrmLog(description = "进行邮件找回密码操作", tableName = {TableNameConstant.USER_TABLE_NAME})
     public Result forgetPassword(@RequestBody MailDTO mailDTO) {
         if (mailDTO == null) {
             return Result.fail("请填写完整邮件信息！！！");
@@ -65,7 +72,7 @@ public class ToolController {
         if (StringUtils.isAnyBlank(receivers[0])) {
             return Result.fail("请填写收件人邮箱信息！！！");
         }
-        mailDTO.setSubject("来自狂小腾的个人运动管理平台的一封短信");
+        mailDTO.setSubject("来自狂小腾的个人健康管理平台的一封短信");
         Random random = new Random();
         // 设置随机密码
         int password = 100000 + random.nextInt(1000000);
@@ -81,6 +88,8 @@ public class ToolController {
      * 七牛云图片上传
      */
     @PostMapping("/upload")
+    @ApiOperation("图片上传接口")
+    @SystemCrmLog(description = "进行上传图片操作")
     public Result upload(@RequestBody MultipartFile file) throws IOException {
         byte[] bytes = file.getBytes();
         String originalFilename = file.getOriginalFilename();
@@ -98,6 +107,8 @@ public class ToolController {
      * @return 成功或失败信息
      */
     @PostMapping("/sms")
+    @ApiOperation("发送手机验证码接口")
+    @SystemCrmLog(description = "进行手机验证码登录操作", tableName = {TableNameConstant.USER_TABLE_NAME})
     public Result sendSms(String phoneNumber) {
         Random random = new Random();
         int code = 100000 + random.nextInt(899999);

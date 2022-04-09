@@ -4,12 +4,16 @@ import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.exception.ExcelDataConvertException;
 import com.alibaba.excel.support.ExcelTypeEnum;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.lt.health.aop.log.SystemCrmLog;
 import com.lt.health.constant.MessageConstant;
 import com.lt.health.constant.Result;
+import com.lt.health.constant.TableNameConstant;
 import com.lt.health.entity.Goods;
 import com.lt.health.entity.dto.PageInfoDTO;
 import com.lt.health.service.GoodsService;
 import com.lt.health.utils.EasyExcelUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +31,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/goods")
+@Api(tags = "商品接口")
 public class GoodsController {
 
     @Autowired
@@ -39,6 +44,8 @@ public class GoodsController {
      * @return 分页结果集
      */
     @PostMapping("/findPage")
+    @ApiOperation("分页查询商品接口")
+    @SystemCrmLog(description = "进行查看商品操作", tableName = {TableNameConstant.GOODS_TABLE_NAME})
     public Result findPage(@RequestBody PageInfoDTO pageInfoDTO) {
         Integer pageNumber = pageInfoDTO.getPageNumber();
         Integer pageSize = pageInfoDTO.getPageSize();
@@ -55,6 +62,7 @@ public class GoodsController {
      * @return 商品信息
      */
     @GetMapping("/{id}")
+    @ApiOperation("查询单个商品信息接口")
     public Result findInfo(@PathVariable Long id) {
         if (id == null || id < 0) {
             return Result.fail(MessageConstant.GOODS_SELECT_FAIL);
@@ -69,6 +77,8 @@ public class GoodsController {
      * @return 成功或失败信息
      */
     @PostMapping("/insert")
+    @ApiOperation("添加商品接口")
+    @SystemCrmLog(description = "进行添加商品操作", tableName = {TableNameConstant.GOODS_TABLE_NAME})
     public Result insert(@RequestBody Goods goods) {
         return goodsService.insert(goods);
     }
@@ -80,6 +90,8 @@ public class GoodsController {
      * @return 成功或失败信息
      */
     @PutMapping("/update")
+    @ApiOperation("修改商品信息接口")
+    @SystemCrmLog(description = "进行修改商品操作", tableName = {TableNameConstant.GOODS_TABLE_NAME})
     public Result update(@RequestBody Goods goods) {
         return goodsService.update(goods);
     }
@@ -91,6 +103,8 @@ public class GoodsController {
      * @return 成功或失败信息
      */
     @DeleteMapping("/delete/{id}")
+    @ApiOperation("删除商品信息接口")
+    @SystemCrmLog(description = "进行删除商品操作", tableName = {TableNameConstant.GOODS_TABLE_NAME})
     public Result delete(@PathVariable Long id) {
         if (id < 0) {
             return Result.fail(MessageConstant.DELETE_GOODS_FAIL);
@@ -105,6 +119,8 @@ public class GoodsController {
      * @return 结果集
      */
     @PostMapping("/batchImport")
+    @ApiOperation("通过excel导入商品信息接口")
+    @SystemCrmLog(description = "通过excel导入商品信息操作", tableName = {TableNameConstant.GOODS_TABLE_NAME})
     public Result batchImport(@RequestParam MultipartFile file) {
         if (file == null || file.getSize() == 0) {
             return Result.fail(MessageConstant.BATCH_IMPORT_FAIL);
@@ -128,6 +144,8 @@ public class GoodsController {
      * @throws IOException IOException
      */
     @GetMapping("/batchExport")
+    @ApiOperation("通过excel导出商品信息接口")
+    @SystemCrmLog(description = "通过excel导出商品信息操作", tableName = {TableNameConstant.GOODS_TABLE_NAME})
     public void batchExport(HttpServletResponse response) throws IOException {
         QueryWrapper<Goods> queryWrapper = new QueryWrapper<>();
         queryWrapper.select("name", "price", "number", "create_time", "model_type"

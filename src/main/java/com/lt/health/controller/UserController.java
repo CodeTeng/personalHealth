@@ -11,6 +11,8 @@ import com.lt.health.entity.dto.PageInfoDTO;
 import com.lt.health.service.UserService;
 import com.lt.health.utils.RedisUtil;
 import com.lt.health.utils.SecurityUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -25,6 +27,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/user")
+@Api(tags = "用户管理接口")
 public class UserController {
 
     @Autowired
@@ -40,7 +43,8 @@ public class UserController {
      * @return 返回token，用token去获取资源
      */
     @PostMapping("/login")
-    @SystemCrmLog(description = "进行登录操作", tableName = TableNameConstant.USER_TABLE_NAME)
+    @SystemCrmLog(description = "进行用户名密码登录操作", tableName = TableNameConstant.USER_TABLE_NAME)
+    @ApiOperation("普通登录接口")
     public Result login(@RequestBody LoginUserDTO loginUserDTO) {
         return userService.login(loginUserDTO);
     }
@@ -52,7 +56,8 @@ public class UserController {
      * @return 返回token，用token去获取资源
      */
     @PostMapping("/sms/login")
-    @SystemCrmLog(description = "进行短信登录", tableName = TableNameConstant.USER_TABLE_NAME)
+    @SystemCrmLog(description = "进行短信登录操作", tableName = TableNameConstant.USER_TABLE_NAME)
+    @ApiOperation("短信登录接口")
     public Result smsLogin(@RequestBody LoginUserDTO loginUserDTO) {
         return userService.login(loginUserDTO);
     }
@@ -60,8 +65,9 @@ public class UserController {
     /**
      * 获取用户脱敏后的信息
      */
-    @SystemCrmLog(description = "获取用户信息操作", tableName = TableNameConstant.USER_TABLE_NAME)
+
     @GetMapping("/getInfo")
+    @ApiOperation("获取用户脱敏后信息接口")
     public Result getUserInfo() {
         User user = SecurityUtil.getUser();
         return Result.success("获取用户信息成功！", user);
@@ -72,6 +78,7 @@ public class UserController {
      */
     @GetMapping("/logout")
     @SystemCrmLog(description = "进行用户退出操作", tableName = TableNameConstant.USER_TABLE_NAME)
+    @ApiOperation("用户退出接口")
     public Result logout() {
         // 清除缓存
         redisUtil.delKey(UserConstant.USER_KEY_PRE + SecurityUtil.getUsername());
@@ -89,6 +96,8 @@ public class UserController {
      * @return 分页结果集
      */
     @PostMapping("/findPage")
+    @SystemCrmLog(description = "进行查看用户信息操作", tableName = TableNameConstant.USER_TABLE_NAME)
+    @ApiOperation("分页查询接口")
     public Result findPage(@RequestBody PageInfoDTO pageInfoDTO) {
         Integer pageNumber = pageInfoDTO.getPageNumber();
         Integer pageSize = pageInfoDTO.getPageSize();
@@ -106,6 +115,7 @@ public class UserController {
      */
     @PostMapping("/insert")
     @SystemCrmLog(description = "进行添加用户操作", tableName = TableNameConstant.USER_TABLE_NAME)
+    @ApiOperation("添加用户接口")
     public Result insert(@RequestBody User user) {
         String userName = user.getUserName();
         String password = user.getPassword();
@@ -137,6 +147,7 @@ public class UserController {
      */
     @PutMapping("/update")
     @SystemCrmLog(description = "进行更新用户操作", tableName = TableNameConstant.USER_TABLE_NAME)
+    @ApiOperation("更新用户接口")
     public Result update(@RequestBody User user) {
         return userService.update(user);
     }
@@ -149,6 +160,7 @@ public class UserController {
      */
     @DeleteMapping("/delete/{id}")
     @SystemCrmLog(description = "进行添加删除操作", tableName = TableNameConstant.USER_TABLE_NAME)
+    @ApiOperation("删除用户接口")
     public Result delete(@PathVariable("id") Long id) {
         return userService.delete(id);
     }

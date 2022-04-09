@@ -1,10 +1,14 @@
 package com.lt.health.controller;
 
+import com.lt.health.aop.log.SystemCrmLog;
 import com.lt.health.constant.MessageConstant;
 import com.lt.health.constant.Result;
+import com.lt.health.constant.TableNameConstant;
 import com.lt.health.entity.Menu;
 import com.lt.health.entity.dto.PageInfoDTO;
 import com.lt.health.service.MenuService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/menu")
+@Api(tags = "菜单接口")
 public class MenuController {
 
     @Autowired
@@ -27,6 +32,7 @@ public class MenuController {
      * @return 父级菜单
      */
     @GetMapping("/findParent")
+    @ApiOperation("查询所有父级菜单接口")
     public Result findParentMenu() {
         return menuService.findParentMenu();
     }
@@ -38,6 +44,7 @@ public class MenuController {
      * @return 分页结果
      */
     @PostMapping("/findPage")
+    @ApiOperation("分页查询所有菜单接口")
     public Result findPage(@RequestBody PageInfoDTO pageInfoDTO) {
         Integer pageNumber = pageInfoDTO.getPageNumber();
         Integer pageSize = pageInfoDTO.getPageSize();
@@ -54,6 +61,8 @@ public class MenuController {
      * @return 成功或者失败信息
      */
     @PostMapping("/insert")
+    @ApiOperation("添加菜单接口")
+    @SystemCrmLog(description = "进行添加菜单操作", tableName = {TableNameConstant.MENU_TABLE_NAME})
     public Result insert(@RequestBody Menu menu) {
         return menuService.insert(menu);
     }
@@ -65,8 +74,9 @@ public class MenuController {
      * @return 修改提示信息
      */
     @PutMapping("/update")
+    @ApiOperation("修改菜单接口")
+    @SystemCrmLog(description = "进行更新菜单操作", tableName = {TableNameConstant.MENU_TABLE_NAME})
     public Result update(@RequestBody Menu menu) {
-        // TODO 判断字段
         return menuService.update(menu);
     }
 
@@ -77,6 +87,8 @@ public class MenuController {
      * @return 删除提示信息
      */
     @DeleteMapping("/delete/{id}")
+    @ApiOperation("删除菜单接口")
+    @SystemCrmLog(description = "进行删除菜单操作", tableName = {TableNameConstant.MENU_TABLE_NAME})
     public Result delete(@PathVariable("id") long id) {
         return menuService.delete(id);
     }

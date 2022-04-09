@@ -3,8 +3,10 @@ package com.lt.health.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.lt.health.aop.log.SystemCrmLog;
 import com.lt.health.constant.MessageConstant;
 import com.lt.health.constant.Result;
+import com.lt.health.constant.TableNameConstant;
 import com.lt.health.entity.User;
 import com.lt.health.entity.WxRun;
 import com.lt.health.entity.dto.Encrypted;
@@ -13,6 +15,8 @@ import com.lt.health.service.WxRunService;
 import com.lt.health.utils.DateUtil;
 import com.lt.health.utils.DecryptDataUtil;
 import com.lt.health.utils.HttpUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +34,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/mini")
 @Slf4j
+@Api(tags = "小程序接口")
 public class MiniController {
 
     @Value("${mini.appid}")
@@ -51,6 +56,8 @@ public class MiniController {
      * @return session_key openId
      */
     @GetMapping("/login")
+    @ApiOperation("小程序登录接口")
+    @SystemCrmLog(description = "进行小程序登录操作", tableName = {TableNameConstant.USER_TABLE_NAME})
     public Result login(String code) {
         if (StringUtils.isBlank(code)) {
             return Result.fail(MessageConstant.LOGIN_FAIL);
@@ -82,6 +89,8 @@ public class MiniController {
      * @return 成功或失败信息
      */
     @PostMapping("/update/info")
+    @ApiOperation("更新WX用户信息接口")
+    @SystemCrmLog(description = "进行更新信息操作", tableName = {TableNameConstant.USER_TABLE_NAME})
     public Result updateInfo(@RequestBody User user) {
         return userService.updateInfoByOpenid(user);
     }
@@ -93,6 +102,8 @@ public class MiniController {
      * @return WX步数和提示信息
      */
     @PostMapping("/wxrun")
+    @ApiOperation("获取WX运动步数接口")
+    @SystemCrmLog(description = "获取WX运动步数操作", tableName = {TableNameConstant.WX_RUN_TABLE_NAME, })
     public Result getRunStep(@RequestBody Encrypted encrypted) {
         String encryptedData = encrypted.getEncryptedData();
         String openid = encrypted.getOpenid();
@@ -127,6 +138,7 @@ public class MiniController {
      * @return WX步数记录
      */
     @GetMapping("/step/report")
+    @ApiOperation("WX步数记录接口")
     public Result stepReport() {
         return wxRunService.stepReport();
     }

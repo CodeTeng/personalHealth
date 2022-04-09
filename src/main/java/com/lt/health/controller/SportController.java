@@ -7,6 +7,8 @@ import com.lt.health.constant.TableNameConstant;
 import com.lt.health.entity.Sport;
 import com.lt.health.entity.dto.PageInfoDTO;
 import com.lt.health.service.SportService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/sport")
+@Api(tags = "运动咨询管理接口")
 public class SportController {
 
     @Autowired
@@ -30,6 +33,7 @@ public class SportController {
      * @return 分页结果
      */
     @PostMapping("/findPage")
+    @ApiOperation("分页查询接口")
     public Result findPage(@RequestBody PageInfoDTO pageInfoDTO) {
         Integer pageNumber = pageInfoDTO.getPageNumber();
         Integer pageSize = pageInfoDTO.getPageSize();
@@ -47,6 +51,7 @@ public class SportController {
      */
     @GetMapping("/{id}")
     @SystemCrmLog(description = "进行获取运动咨询操作", tableName = TableNameConstant.SPORT_TABLE_NAME)
+    @ApiOperation("获取运动咨询详细信息接口")
     public Result getInfo(@PathVariable Long id) {
         return sportService.getInfo(id);
     }
@@ -59,6 +64,7 @@ public class SportController {
      */
     @PostMapping("/insert")
     @SystemCrmLog(description = "进行添加运动咨询操作", tableName = TableNameConstant.SPORT_TABLE_NAME)
+    @ApiOperation("添加运动咨询接口")
     public Result insert(@RequestBody Sport sport) {
         return sportService.insert(sport);
     }
@@ -70,6 +76,7 @@ public class SportController {
      * @return 成功或者失败信息
      */
     @PutMapping("/update")
+    @ApiOperation("修改运动咨询接口")
     @SystemCrmLog(description = "进行更新运动咨询操作", tableName = TableNameConstant.SPORT_TABLE_NAME)
     public Result update(@RequestBody Sport sport) {
         return sportService.update(sport);
@@ -83,6 +90,7 @@ public class SportController {
      * @return 删除提示信息
      */
     @DeleteMapping("/delete/{id}")
+    @ApiOperation("删除运动咨询接口")
     @SystemCrmLog(description = "进行删除运动咨询操作", tableName = TableNameConstant.SPORT_TABLE_NAME)
     public Result delete(@PathVariable("id") Long id) {
         return sportService.delete(id);
