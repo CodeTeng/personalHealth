@@ -146,4 +146,6 @@ public interface MessageConstant {
     String FOOD_TYPE_DELETE_FAIL = "食物分类删除失败";
     String FOOD_TYPE_DELETE_SUCCESS = "食物分类删除成功";
     String FOOD_TYPE_SELECT_SUCCESS = "食物分类信息查询成功";
+
+    String CAPTCHA_IMAGE_SEND_SUCCESS = "获取验证码成功";
 }

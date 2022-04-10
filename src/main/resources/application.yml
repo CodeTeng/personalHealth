@@ -78,3 +78,8 @@ mini:
 logging:
   file:
     path: my.log
+
+# 项目相关配置
+lt:
+  # 验证码配置
+  captchaType: math

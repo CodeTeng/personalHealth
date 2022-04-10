@@ -37,7 +37,7 @@ public class RedisUtil {
     }
 
     /**
-     * 向redis中存值并指定过期时间
+     * 向redis中存值并指定过期时间 分钟
      * SECONDS: 秒
      * MINUTES: 分
      * HOURS: 时

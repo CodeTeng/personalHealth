@@ -11,6 +11,7 @@ public class SecurityContents {
             "/user/login",
             "/user/logout",
             "/oauth/**",
+            "/captchaImage",
 
             //swagger相关
             "/favicon.ico",
