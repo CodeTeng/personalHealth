@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lt.health.config.security.service.UserDetailServiceImpl;
+import com.lt.health.constant.Constants;
 import com.lt.health.constant.MessageConstant;
 import com.lt.health.constant.Result;
 import com.lt.health.constant.UserConstant;
@@ -12,6 +13,8 @@ import com.lt.health.entity.User;
 import com.lt.health.entity.UserRoles;
 import com.lt.health.entity.dto.LoginUserDTO;
 import com.lt.health.entity.dto.PageInfoDTO;
+import com.lt.health.exception.CaptchaException;
+import com.lt.health.exception.CaptchaExpireException;
 import com.lt.health.mapper.RoleMapper;
 import com.lt.health.mapper.UserMapper;
 import com.lt.health.mapper.UserRolesMapper;
@@ -78,6 +81,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         String code = loginUserDTO.getCode();
         String username = loginUserDTO.getUsername();
         String password = loginUserDTO.getPassword();
+        String captchaCode = loginUserDTO.getCaptchaCode();
+        String uuid = loginUserDTO.getUuid();
         if ("2".equals(type)) {
             // 2 手机验证码进行登录
             // 2.1 请求判断参数
@@ -100,7 +105,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
             userDetails = userDetailService.loadUserByUsername(phoneNumber);
         } else {
             // 3.账号密码登录
-            if (StringUtils.isAnyBlank(username, password)) {
+            if (StringUtils.isAnyBlank(username, password, captchaCode)) {
                 return Result.fail("请填写完整的信息！！！");
             }
             if (username.length() < 2 || username.length() > 20) {
@@ -109,6 +114,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
             if (password.length() < 6 || password.length() > 20) {
                 return Result.fail("密码长度在6到20个字符之间！！！");
             }
+            log.info("3.0 校验验证码");
+            validateCaptchaCode(captchaCode, uuid);
             log.info("3.1 开始登录");
             // 3.1 用security进行登录
             userDetails = userDetailService.loadUserByUsername(username);
@@ -134,6 +141,24 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         map.put("tokenHead", tokenHead);
         map.put("token", token);
         return Result.success("登录成功！", map);
+    }
+
+    /**
+     * 校验验证码
+     *
+     * @param captchaCode 验证码图片
+     * @param uuid        验证码图片唯一标识
+     */
+    private void validateCaptchaCode(String captchaCode, String uuid) {
+        String verifyCode = Constants.CAPTCHA_CODE_KEY + uuid;
+        String captcha = (String) redisUtil.getValue(verifyCode);
+        redisUtil.delKey(verifyCode);
+        if (captcha == null) {
+            throw new CaptchaExpireException();
+        }
+        if (!captchaCode.equalsIgnoreCase(captcha)) {
+            throw new CaptchaException();
+        }
     }
 
     @Override

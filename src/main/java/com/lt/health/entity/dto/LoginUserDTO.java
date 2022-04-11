@@ -32,7 +32,7 @@ public class LoginUserDTO {
     private String phoneNumber;
 
     /**
-     * 验证码
+     * 手机验证码
      */
     @ApiModelProperty("手机验证码")
     private String code;
@@ -42,4 +42,16 @@ public class LoginUserDTO {
      */
     @ApiModelProperty("登录方式 1-普通登录 2-手机验证码登录")
     private String type;
+
+    /**
+     * 唯一标识
+     */
+    @ApiModelProperty("图片验证唯一标识")
+    private String uuid;
+
+    /**
+     * 登录图片验证码
+     */
+    @ApiModelProperty("图片验证码")
+    private String captchaCode;
 }
